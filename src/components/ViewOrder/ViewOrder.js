@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import MarchanSidebar from '../Marchandiser/MarchanSidebar/MarchanSidebar';
 
 const ViewOrder = () => {
     const [orders, setOrders] = useState([])
@@ -10,10 +9,9 @@ const ViewOrder = () => {
     }, [])
     return (
         <section className="fluid-container">
-            <h1>Buyer Dashboard</h1>
             <div className="row mx-0">
                 <div className='col-md-2 p-0'>
-                    <MarchanSidebar></MarchanSidebar>
+                    
                 </div>
                 <div className="col-md-10 p-4 mx-auto">
                     <div className="row">

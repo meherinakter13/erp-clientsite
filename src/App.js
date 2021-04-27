@@ -24,6 +24,9 @@ import ManageSupplier from './components/Marchandiser/ManageSupplier/ManageSuppl
 import ViewSample from './components/ViewSample/ViewSample';
 import ViewOrder from './components/ViewOrder/ViewOrder';
 import ManageSample from './components/Buyer/ManageSample/ManageSample';
+import SampleImg from './components/Sample/SampleImg/SampleImg';
+import ManageSampleImg from './components/Sample/ManageSampleImg/ManageSampleImg';
+import QntyFabric from './components/CAD/QntyFabric/QntyFabric';
 
 axios.defaults.baseURL = 'http://localhost:5000'
 
@@ -83,6 +86,18 @@ function App() {
         </Route>
         <Route path ="/manageSupplier">
           <ManageSupplier></ManageSupplier>
+        </Route>
+        {/* ----------------------------Sample----------------------------------- */}
+        <Route path ="/addFSampleImg">
+          <SampleImg></SampleImg>
+        </Route>
+        <Route path ="/manageFSampleImg">
+          <ManageSampleImg></ManageSampleImg>
+        </Route>
+        {/* --------------------------CAD------------------- */}
+        
+        <Route path ="/addSQntyFab">
+          <QntyFabric></QntyFabric>
         </Route>
       </Switch>
     </Router>
