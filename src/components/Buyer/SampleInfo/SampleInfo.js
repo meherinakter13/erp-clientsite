@@ -5,26 +5,18 @@ import { storage } from "../../firebase";
 import axios from 'axios';
 
 const SampleInfo = () => {
-    //const [info, setInfo] = useState({})
-    const [image, setImage] = useState(null);
-  //const [url, setUrl] = useState("");
+  const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
-//   const [sample,setSample] = useState({
-//       info:info,
-//       url:url
-//   })
-
-    const [data,setData]=useState({
-        measurement:"",
-        fabric:"",
-        img_url:""
+  const [data,setData]=useState({
+      measurement:"",
+      fabric:"",
+      img_url:""
     })
 
-
-    const onChangeData=(e)=>{
-        console.log(e.target.name,"----",e.target.value)
-        setData({...data,[e.target.name]:e.target.value})
-    }
+  const onChangeData=(e)=>{
+      console.log(e.target.name,"----",e.target.value)
+      setData({...data,[e.target.name]:e.target.value})
+  }
 
   const handleChange = e => {
     if (e.target.files[0]) {
@@ -57,27 +49,13 @@ const SampleInfo = () => {
     );
   };
 
- // console.log("image: ", image);
-    
-
-    // const handleBlur = e =>{
-    //     const newInfo = {...info}
-    //     newInfo[e.target.name] = e.target.value;
-    //     setInfo(newInfo);
-    // }
-
-    // const handleFileChange = e =>{
-    //     const newFile = e.target.files[0];
-    //     setFile(newFile);
-    // }
-
     const handleSubmit =async (e) =>{
         e.preventDefault();
         try {
             const res = await axios.post('/upload', data)
             console.log(res.data);
             if (res.data) {
-                alert("Supplier added successfully")
+                alert("Sample info added successfully")
             }
         } catch (e) {
             console.log(e);
