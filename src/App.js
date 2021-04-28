@@ -27,6 +27,12 @@ import ManageSample from './components/Buyer/ManageSample/ManageSample';
 import SampleImg from './components/Sample/SampleImg/SampleImg';
 import ManageSampleImg from './components/Sample/ManageSampleImg/ManageSampleImg';
 import QntyFabric from './components/CAD/QntyFabric/QntyFabric';
+import TimeCost from './components/IE/TimeCost/TimeCost';
+import ViewFinalSample from './components/ViewFinalSample/ViewFinalSample';
+import ManageTimeCost from './components/IE/ManageTimeCost/ManageTimeCost';
+import ManageQntyFab from './components/CAD/ManageQntyFab/ManageQntyFab';
+import ProductionImg from './components/Production/ProductionImg/ProductionImg';
+import ManageProImg from './components/Production/ManageProImg/ManageProImg';
 
 axios.defaults.baseURL = 'http://localhost:5000'
 
@@ -67,6 +73,9 @@ function App() {
         <Route path ="/viewOrder">
           <ViewOrder></ViewOrder>
         </Route>
+        <Route path ="/viewFiSample">
+          <ViewFinalSample></ViewFinalSample>
+        </Route>
         {/*------------------------ Buyer-------------------------------- */}
         <Route path ="/addSample">
           <SampleInfo></SampleInfo>
@@ -94,10 +103,26 @@ function App() {
         <Route path ="/manageFSampleImg">
           <ManageSampleImg></ManageSampleImg>
         </Route>
+          {/* ----------------------------Production----------------------------------- */}
+          <Route path ="/addFProImg">
+          <ProductionImg></ProductionImg>
+        </Route>
+        <Route path ="/manageFProImg">
+          <ManageProImg></ManageProImg>
+        </Route>
         {/* --------------------------CAD------------------- */}
-        
         <Route path ="/addSQntyFab">
           <QntyFabric></QntyFabric>
+        </Route>
+        <Route path ="/manageSQntyFab">
+          <ManageQntyFab></ManageQntyFab>
+        </Route>
+        {/* --------------------------IE-------------------  */}
+        <Route path ="/addSTime">
+          <TimeCost></TimeCost>
+        </Route>
+        <Route path ="/manageFSTimeCost">
+          <ManageTimeCost></ManageTimeCost>
         </Route>
       </Switch>
     </Router>

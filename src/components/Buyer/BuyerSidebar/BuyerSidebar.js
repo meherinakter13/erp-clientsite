@@ -26,6 +26,11 @@ const BuyerSidebar = () => {
                          <span>Manage Order info</span>
                     </Link>
                 </li>
+                <li>
+                    <Link to="/viewFiSample" className="text-white">
+                         <span>Vview Final Sample</span>
+                    </Link>
+                </li>
 
             </ul>
         </div >

@@ -1,14 +1,10 @@
 import axios from 'axios';
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const QntyFabric = () => {
-    //insert into CAD
-    //step 1: get all the sample
-    //step 2: select the sample id
-    //insert using that sample id
-
+const TimeCost = () => {
     const [samples,setSamples]=useState()
-    const [q,setQ]=useState(0)
+    const [time,setTime]=useState(0)
+    const [cost,setCost]=useState(0)
     const [s_id,setid]=useState(-1)
 
     useEffect(()=>{
@@ -25,16 +21,17 @@ const QntyFabric = () => {
     }
 
     const onSubmit=async()=>{
-        const cad={
-            qnty_fabric:q,
-            sample_id:s_id,
+        const IE={
+            timing:time,
+            costing:cost,
+            smaple_id:s_id,
             production_id:-1
         }
 
         //console.log(q)
-       const res= await axios.post('/addFSampleqnty',cad)
+       const res= await axios.post('/addFSampleTime',IE)
        if(res.data){
-           alert("added")
+           alert("added time and cost")
        }
        console.log(res.data)
     }
@@ -51,7 +48,10 @@ const QntyFabric = () => {
             
     })}
 
-        <input type="text" onChange={(e)=>setQ(e.target.value)}/>
+        <input type="text" onChange={(e)=>setTime(e.target.value)}/>
+        <br/>
+        <br/>
+        <input type="text" onChange={(e)=>setCost(e.target.value)}/>
 
         <button onClick={onSubmit}> submit</button>
 
@@ -59,4 +59,4 @@ const QntyFabric = () => {
     );
 };
 
-export default QntyFabric;
+export default TimeCost;

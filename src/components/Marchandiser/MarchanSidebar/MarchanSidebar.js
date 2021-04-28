@@ -18,6 +18,11 @@ const MarchanSidebar = () => {
                     </Link>
                 </li>
                 <li>
+                    <Link to="/viewFiSample" className="text-white">
+                        <span>View Final Sample</span>
+                    </Link>
+                </li>
+                <li>
                     <Link to="/addSupplier" className="text-white">
                         <span>Add Supplier</span>
                     </Link>

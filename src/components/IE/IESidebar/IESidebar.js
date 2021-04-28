@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import'./CADSidebar.css';
+import'./IESidebar.css';
 
-const CADSidebar = () => {
+const IESidebar = () => {
     return (
         <div className="sidebar py-5 px-4" style={{ height: "100vh" }}>
         <ul className="list-unstyled">
@@ -18,13 +18,13 @@ const CADSidebar = () => {
                     </Link>
                 </li>
             <li>
-                <Link to="/addSQntyFab" className="text-white">
-                    <span>Add Sample Quantity of fabric</span>
+                <Link to="/addSTime" className="text-white">
+                    <span>Add Sample Time Cost</span>
                 </Link>
             </li>
             <li>
-                <Link to="/manageSQntyFab" className="text-white">
-                     <span>Manage Sample Quantity of fabric</span>
+                <Link to="/manageFSTimeCost" className="text-white">
+                     <span>Manage Sample Time Cost</span>
                 </Link>
             </li>
 
@@ -33,4 +33,4 @@ const CADSidebar = () => {
     );
 };
 
-export default CADSidebar;
+export default IESidebar;

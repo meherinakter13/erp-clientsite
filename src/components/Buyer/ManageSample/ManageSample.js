@@ -22,7 +22,7 @@ const ManageSample = () => {
             console.log(res.data);
 
             if (res.data) {
-                alert("order deleted successfully")
+                alert("Sample deleted successfully")
                 deleteProduct();
             }
         } catch (e) {
