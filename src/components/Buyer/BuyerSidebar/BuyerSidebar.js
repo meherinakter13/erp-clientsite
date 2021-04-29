@@ -28,7 +28,12 @@ const BuyerSidebar = () => {
                 </li>
                 <li>
                     <Link to="/viewFiSample" className="text-white">
-                         <span>Vview Final Sample</span>
+                         <span>View Final Sample</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/viewFiProduct" className="text-white">
+                         <span>View Final Product</span>
                     </Link>
                 </li>
 

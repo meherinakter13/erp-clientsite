@@ -23,8 +23,13 @@ const CADSidebar = () => {
                 </Link>
             </li>
             <li>
+                <Link to="/addProQntyFab" className="text-white">
+                    <span>Add Production Quantity of fabric</span>
+                </Link>
+            </li>
+            <li>
                 <Link to="/manageSQntyFab" className="text-white">
-                     <span>Manage Sample Quantity of fabric</span>
+                     <span>Manage Quantity of fabric</span>
                 </Link>
             </li>
 

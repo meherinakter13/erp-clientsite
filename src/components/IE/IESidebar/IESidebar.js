@@ -23,10 +23,16 @@ const IESidebar = () => {
                 </Link>
             </li>
             <li>
-                <Link to="/manageFSTimeCost" className="text-white">
-                     <span>Manage Sample Time Cost</span>
+                <Link to="/addProTime" className="text-white">
+                    <span>Add Production Time Cost</span>
                 </Link>
             </li>
+            <li>
+                <Link to="/manageFSTimeCost" className="text-white">
+                     <span>Manage Time Cost</span>
+                </Link>
+            </li>
+
 
         </ul>
     </div >

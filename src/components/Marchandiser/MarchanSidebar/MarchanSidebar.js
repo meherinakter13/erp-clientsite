@@ -6,7 +6,16 @@ const MarchanSidebar = () => {
     return (
         <div className="sidebar py-5 px-4" style={{ height: "100vh" }}>
             <ul className="list-unstyled">
-
+            <li>
+                    <Link to="/addSupplier" className="text-white">
+                        <span>Add Supplier</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/manageSupplier" className="text-white">
+                         <span>Manage Supplier info</span>
+                    </Link>
+                </li>
                 <li>
                     <Link to="/viewSample" className="text-white">
                         <span>View Sample info</span>
@@ -23,13 +32,8 @@ const MarchanSidebar = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/addSupplier" className="text-white">
-                        <span>Add Supplier</span>
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/manageSupplier" className="text-white">
-                         <span>Manage Supplier info</span>
+                    <Link to="/viewFiProduct" className="text-white">
+                         <span>View Final Product</span>
                     </Link>
                 </li>
 

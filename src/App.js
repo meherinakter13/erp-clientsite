@@ -33,6 +33,9 @@ import ManageTimeCost from './components/IE/ManageTimeCost/ManageTimeCost';
 import ManageQntyFab from './components/CAD/ManageQntyFab/ManageQntyFab';
 import ProductionImg from './components/Production/ProductionImg/ProductionImg';
 import ManageProImg from './components/Production/ManageProImg/ManageProImg';
+import ProductTimeCost from './components/IE/ProductTimeCost/ProductTimeCost';
+import ProductQntyFab from './components/CAD/ProductQntyFab/ProductQntyFab';
+import ViewFinalProduct from './components/ViewFinalProduct/ViewFinalProduct';
 
 axios.defaults.baseURL = 'http://localhost:5000'
 
@@ -76,6 +79,9 @@ function App() {
         <Route path ="/viewFiSample">
           <ViewFinalSample></ViewFinalSample>
         </Route>
+        <Route path ="/viewFiProduct">
+          <ViewFinalProduct></ViewFinalProduct>
+        </Route>
         {/*------------------------ Buyer-------------------------------- */}
         <Route path ="/addSample">
           <SampleInfo></SampleInfo>
@@ -117,12 +123,18 @@ function App() {
         <Route path ="/manageSQntyFab">
           <ManageQntyFab></ManageQntyFab>
         </Route>
+        <Route path ="/addProQntyFab">
+          <ProductQntyFab></ProductQntyFab>
+        </Route>
         {/* --------------------------IE-------------------  */}
         <Route path ="/addSTime">
           <TimeCost></TimeCost>
         </Route>
         <Route path ="/manageFSTimeCost">
           <ManageTimeCost></ManageTimeCost>
+        </Route>
+        <Route path ="/addProTime">
+          <ProductTimeCost></ProductTimeCost>
         </Route>
       </Switch>
     </Router>
