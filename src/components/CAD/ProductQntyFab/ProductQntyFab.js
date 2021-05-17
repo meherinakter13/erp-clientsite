@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import CADSidebar from '../CADSidebar/CADSidebar';
 
 const ProductQntyFab = () => {
     const [products,setProducts]=useState()
@@ -34,22 +35,30 @@ const ProductQntyFab = () => {
        console.log(res.data)
     }
     return (
-        <div>
-            <h1>qnty fabric</h1>
+        <section className="container-fluid row " >
+        <div className="col-md-3">
+        <h1>CAD Dashboard</h1>
+            <CADSidebar></CADSidebar>
+        </div>
+        <div className="col-md-9 mt-5 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
+            <h4>Add Quantity of fabric for Products</h4>
             {/* <p>{JSON.stringify(samples)}</p> */}
 
 
     {products && products.map((item)=>{
         //item.image
-        return <img style={{ width:"100px", height:"100px",margin:"20px"}} onClick={onSelect} id={item.id} key={item.id} src={item.image || 'https://www.w3schools.com/sql/img_innerjoin.gif'} />
+        return <img style={{ width:"100px", height:"100px",margin:"20px"}} onClick={onSelect} id={item.id} key={item.id} src={item.image || 'https://www.w3schools.com/sql/img_innerjoin.gif'} alt=""/>
             
     })}
-
+ <br/><br/>
+ <label htmlFor="">Quantity of fabric</label>
+ <br/>
         <input type="text" onChange={(e)=>setQ(e.target.value)}/>
-
+<br/><br/>
         <button onClick={onSubmit}> submit</button>
 
         </div>
+        </section>
     );
 };
 

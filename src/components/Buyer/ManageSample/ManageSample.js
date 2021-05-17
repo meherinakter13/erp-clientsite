@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import BuyerSidebar from '../BuyerSidebar/BuyerSidebar';
 
 const ManageSample = () => {
@@ -29,6 +30,7 @@ const ManageSample = () => {
             console.log(e);
         }
     }
+    
     return (
         <div className="fluid-container">
            <h1>Buyer Dashboard</h1>
@@ -44,6 +46,8 @@ const ManageSample = () => {
                 <th className="w-25" scope="col">Fabric</th>
                 <th className="w-25" scope="col">Image</th>
                 <th className="w-25" scope="col">Action</th>
+                <th className="w-25" scope="col">View Final sample</th>
+
                 </tr>
             </thead>
         </table>
@@ -57,6 +61,7 @@ const ManageSample = () => {
                         <td className="w-25">{sample.fabric}</td>
                         <td className="w-25"><img style={{width:"150px",height:"150px"}} src={sample.image} alt=""/></td>
                         <td className="w-25"><button className ="btn btn-danger mt-3" onClick = {()=>handleDelete(sample.id)}>Delete</button></td>
+                        <td className="w-25"><button className ="btn btn-danger mt-3"><Link to ={`/viewFiSample/${sample.id}`}className="text-white">view Final Sample</Link></button></td>
                         </tr>
                     </tbody>
                 </table>

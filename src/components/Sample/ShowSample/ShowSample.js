@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import SampleSidebar from '../SampleSidebar/SampleSidebar';
 
-
-const ViewSample = () => {
+const ShowSample = () => {
     const [samples, setSamples] = useState([])
     useEffect(() => {
         fetch('http://localhost:5000/sample')
@@ -11,9 +11,10 @@ const ViewSample = () => {
     }, [])
     return (
         <section className="fluid-container">
+            <h1>Sample Dashboard</h1>
         <div className="row mx-0">
             <div className='col-md-2 p-0'>
-              
+              <SampleSidebar></SampleSidebar>
             </div>
             <div className="col-md-10 p-4 mx-auto">
                 <div className="row">
@@ -25,7 +26,7 @@ const ViewSample = () => {
                                         <th className="w-25" scope="col">Measurement</th>
                                         <th className="w-25" scope="col">Fabric</th>
                                         <th className="w-25" scope="col">Image</th>
-
+                                        <th className="w-25" scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -33,6 +34,7 @@ const ViewSample = () => {
                                         <td className="">{sample.measurement}</td>
                                         <td className="">{sample.fabric}</td>
                                         <td className=""><img style={{width:"150px",height:"150px"}} src={sample.image} alt=""/></td>
+                                        <td><button className="m-5  btn btn-danger"><Link to ={`/addFSampleImg/${sample.id}`} className = "text-white">Add Image</Link> </button></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -45,4 +47,4 @@ const ViewSample = () => {
     );
 };
 
-export default ViewSample;
+export default ShowSample;

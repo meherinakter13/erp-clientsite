@@ -8,13 +8,8 @@ const SampleSidebar = () => {
         <ul className="list-unstyled">
 
             <li>
-                <Link to="/viewSample" className="text-white">
+                <Link to="/showSample" className="text-white">
                     <span>View Sample info</span>
-                </Link>
-            </li>
-            <li>
-                <Link to="/addFSampleImg" className="text-white">
-                    <span>Add Final Sample</span>
                 </Link>
             </li>
             <li>

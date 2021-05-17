@@ -36,6 +36,11 @@ import ManageProImg from './components/Production/ManageProImg/ManageProImg';
 import ProductTimeCost from './components/IE/ProductTimeCost/ProductTimeCost';
 import ProductQntyFab from './components/CAD/ProductQntyFab/ProductQntyFab';
 import ViewFinalProduct from './components/ViewFinalProduct/ViewFinalProduct';
+import OrderStatus from './components/Marchandiser/OrderStatus/OrderStatus';
+import ViewStatus from './components/Buyer/ViewStatus/ViewStatus';
+import ShowSample from './components/Sample/ShowSample/ShowSample';
+import AddBuyer from './components/Marchandiser/AddBuyer/AddBuyer';
+import ManageBuyer from './components/Marchandiser/ManageBuyer/ManageBuyer';
 
 axios.defaults.baseURL = 'http://localhost:5000'
 
@@ -76,7 +81,7 @@ function App() {
         <Route path ="/viewOrder">
           <ViewOrder></ViewOrder>
         </Route>
-        <Route path ="/viewFiSample">
+        <Route path ="/viewFiSample/:id">
           <ViewFinalSample></ViewFinalSample>
         </Route>
         <Route path ="/viewFiProduct">
@@ -95,6 +100,9 @@ function App() {
         <Route path ="/manageOrder">
           <ManageOrder></ManageOrder>
         </Route>
+        <Route path ="/viewStatus">
+          <ViewStatus></ViewStatus>
+        </Route>
         {/*------------------------ Marchandiser--------------------------------  */}
         <Route path ="/addSupplier">
           <AddSupplier></AddSupplier>
@@ -102,12 +110,24 @@ function App() {
         <Route path ="/manageSupplier">
           <ManageSupplier></ManageSupplier>
         </Route>
+        <Route path ="/viewOrderStatus">
+          <OrderStatus></OrderStatus>
+        </Route>
+        <Route path ="/addBuyer">
+          <AddBuyer></AddBuyer>
+        </Route>
+        <Route path ="/manageBuyer">
+          <ManageBuyer></ManageBuyer>
+        </Route>
         {/* ----------------------------Sample----------------------------------- */}
-        <Route path ="/addFSampleImg">
+        <Route path ="/addFSampleImg/:id">
           <SampleImg></SampleImg>
         </Route>
         <Route path ="/manageFSampleImg">
           <ManageSampleImg></ManageSampleImg>
+        </Route>
+        <Route path ="/showSample">
+          <ShowSample></ShowSample>
         </Route>
           {/* ----------------------------Production----------------------------------- */}
           <Route path ="/addFProImg">

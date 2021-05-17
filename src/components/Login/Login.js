@@ -54,11 +54,24 @@ const Login = () => {
         }
     }
     return (
-        <div>
-        <input onChange={onChange} name="department" placeholder="department" />
-        <input onChange={onChange} name="email" placeholder="email" />
-        <input onChange={onChange} name="password" placeholder="password" />
-        <button onClick={onSubmit}>Login</button>
+        <div className="container text-center w-25 mt-5 pt-5 bg-info text-white " >
+            <form>
+                    <div class="form-group">
+                        <label for="exampleInputName">Department/Buyer</label>
+                        <input onChange={onChange} type="text" class="form-control" name="department" placeholder="Enter Depertment name or Buyer"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName">Email</label>
+                        <input onChange={onChange} type="email" class="form-control" name="email" placeholder="Enter your email"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName">Password</label>
+                        <input onChange={onChange} type="password" class="form-control" name="password" placeholder="Enter your password"/>
+                    </div>
+                    <br />
+                    <button className="btn btn-danger mb-3"onClick={onSubmit}>Login</button>
+                    </form>
+       
     </div>
     );
 };

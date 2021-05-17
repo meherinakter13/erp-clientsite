@@ -78,7 +78,7 @@ const SampleInfo = () => {
             <button onClick={handleUpload}>Upload</button>
             <br />
             <br />
-            <img style={{ height: "100px", width: "100px" }} src={data.img_url || "http://via.placeholder.com/300"} alt="firebase-image" />
+            <img style={{ height: "100px", width: "100px" }} src={data.img_url || "http://via.placeholder.com/300"} alt="" />
             <br />
             <br />
             <label for="exampleInputName">Measurement</label>

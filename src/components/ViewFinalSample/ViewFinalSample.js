@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const ViewFinalSample = () => {
+    let {id} = useParams();
     const [finaSamples, setFinaSamples] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/get_all_smaples')
+        fetch(`http://localhost:5000/get_all_smaples/${id}`)
             .then(res => res.json())
             .then(data => setFinaSamples(data))
     }, [])
@@ -32,8 +34,8 @@ const ViewFinalSample = () => {
                                         <td className=""><img style={{width:"150px",height:"150px"}} src={sample.image} alt=""/></td>
                                         <td className="">{sample.measurement}</td>
                                         <td className="">{sample.qnty_fabric}</td>
-                                        <td className="">{sample.timing}</td>
-                                        <td className="">{sample.costing}</td>
+                                        <td className="">{sample.timing}days</td>
+                                        <td className="">{sample.costing}Tk</td>
                                     </tr>
                                 </tbody>
                             </table>

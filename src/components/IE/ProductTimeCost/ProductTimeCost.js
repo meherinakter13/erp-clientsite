@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import IESidebar from '../IESidebar/IESidebar';
 
 const ProductTimeCost = () => {
     const [products,setSProducts]=useState()
@@ -35,8 +36,13 @@ const ProductTimeCost = () => {
        console.log(res.data)
     }
     return (
-        <div>
-            <h1>Time and Cost</h1>
+        <section className="container-fluid row " >
+        <div className="col-md-3">
+        <h1>IE Dashboard</h1>
+            <IESidebar></IESidebar>
+        </div>
+        <div className="col-md-9 mt-5 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
+            <h4>Add product Time and Cost</h4>
             {/* <p>{JSON.stringify(samples)}</p> */}
 
 
@@ -44,15 +50,21 @@ const ProductTimeCost = () => {
         return <img style={{ width:"100px", height:"100px",margin:"20px"}} onClick={onSelect} id={item.id} key={item.id} src={item.image || 'https://www.w3schools.com/sql/img_innerjoin.gif'}alt="" />
             
     })}
+    <br/>
+    <br/>
+        <label htmlFor="">Add time</label>
+        <br/>
 
-        <input type="text" onChange={(e)=>setTime(e.target.value)}/>
+        <input type="text" placeholder="enter time" onChange={(e)=>setTime(e.target.value)}/>
         <br/>
         <br/>
-        <input type="text" onChange={(e)=>setCost(e.target.value)}/>
-
+        <label htmlFor="">Add Cost</label><br/>
+        <input type="text" placeholder="enter cost" onChange={(e)=>setCost(e.target.value)}/>
+<br/><br/>
         <button onClick={onSubmit}> submit</button>
 
         </div>
+        </section>
     );
 };
 

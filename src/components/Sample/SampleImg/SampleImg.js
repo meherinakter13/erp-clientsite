@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { storage } from "../../firebase";
 import SampleSidebar from '../SampleSidebar/SampleSidebar';
 
 const SampleImg = () => {
+  let { id } = useParams();
     const [image, setImage] = useState(null);
     const [progress, setProgress] = useState(0);
     const [data, setData] = useState({
@@ -49,7 +51,7 @@ const SampleImg = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        const res = await axios.post('/addFSampleImg', data)
+        const res = await axios.post(`/addFSampleImg/${id}`, data)
         console.log(res.data);
         if (res.data) {
           alert("Sample info added successfully")
