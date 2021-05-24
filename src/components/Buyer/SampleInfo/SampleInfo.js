@@ -70,11 +70,12 @@ const SampleInfo = () => {
         </div>
         <div className="col-md-10 p-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
           <h5 className="text-brand">Add Sample</h5>
+          <form action="" onSubmit ={handleSubmit}>
           
             <progress value={progress} max="100" />
             <br />
             <br />
-            <input type="file" onChange={handleChange} />
+            <input type="file" onChange={handleChange} required />
             <button onClick={handleUpload}>Upload</button>
             <br />
             <br />
@@ -82,11 +83,12 @@ const SampleInfo = () => {
             <br />
             <br />
             <label for="exampleInputName">Measurement</label>
-            <input onChange={onChangeData} type="text" class="form-control" name="measurement" placeholder=" sample measurement" />
+            <input onChange={onChangeData} type="text" class="form-control" name="measurement" placeholder=" sample measurement" required />
             <label for="exampleInputEmail1">Fabric Type</label>
-            <input onChange={onChangeData} type="text" class="form-control" name="fabric" placeholder="Enter fabric type" />
+            <input onChange={onChangeData} type="text" class="form-control" name="fabric" placeholder="Enter fabric type" required />
             <br/>
-            <button onClick={handleSubmit} class="btn btn-primary">Submit</button>
+            <input class="btn btn-primary" type="submit" value="Submit"/>
+            </form>
         </div>
       </div>
     </section>

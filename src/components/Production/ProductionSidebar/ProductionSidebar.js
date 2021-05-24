@@ -8,13 +8,8 @@ const ProductionSidebar = () => {
         <ul className="list-unstyled">
 
             <li>
-                <Link to="/viewOrder" className="text-white">
+                <Link to="/showOrder" className="text-white">
                     <span>View Order info</span>
-                </Link>
-            </li>
-            <li>
-                <Link to="/addFProImg" className="text-white">
-                    <span>Add Final Product</span>
                 </Link>
             </li>
             <li>

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const ViewFinalProduct = () => {
+    let {id} = useParams();
     const [finalProducts, setFinalProducts] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/get_all_products')
+        fetch(`http://localhost:5000/get_all_products/${id}`)
             .then(res => res.json())
             .then(data => setFinalProducts(data))
     }, [])

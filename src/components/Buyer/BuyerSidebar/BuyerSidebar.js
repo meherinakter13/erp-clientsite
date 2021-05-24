@@ -27,16 +27,6 @@ const BuyerSidebar = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/viewFiSample" className="text-white">
-                         <span>View Final Sample</span>
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/viewFiProduct" className="text-white">
-                         <span>View Final Product</span>
-                    </Link>
-                </li>
-                <li>
                     <Link to="/viewStatus" className="text-white">
                          <span>View Order Status</span>
                     </Link>

@@ -1,13 +1,18 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import BuyerSidebar from '../BuyerSidebar/BuyerSidebar';
 
 const ManageOrder = () => {
     const [orders, setOrders] = useState([])
+    const [date, setDate] = useState({})
     useEffect(() => {
         fetch('http://localhost:5000/order')
             .then(res => res.json())
-            .then(data => setOrders(data))
+            .then(data => {
+                setOrders(data)
+                data.map(data => setDate(data))
+            })
     }, [])
 
     const deleteProduct = () => {
@@ -16,18 +21,44 @@ const ManageOrder = () => {
             .then(data => setOrders(data))
     }
 
-    const handleDelete = async (id) => {
-        try {
-            const res = await axios.delete(`/deleteOrder/${id}`, orders)
-            console.log(res.data);
+    console.log(date);
+    var deleteDate = new Date(date.orderDate).getDate()
+    var deleteDate2 = new Date(date.orderDate).getDate() + 3
+    console.log(deleteDate);
 
-            if (res.data) {
-                alert("order deleted successfully")
-                deleteProduct();
+    const handleDelete = async (id) => {
+        
+          if (deleteDate2 > new Date().getDate() || deleteDate === new Date().getDate()){
+            try {
+                const res = await axios.delete(`/deleteOrder/${id}`, orders)
+                console.log(res.data);
+
+                if (res.data) {
+                    alert("order deleted successfully")
+                    deleteProduct();
+                }
+            } catch (e) {
+                console.log(e);
             }
-        } catch (e) {
-            console.log(e);
         }
+        // else if () {
+        //     try {
+        //         const res = await axios.delete(`/deleteOrder/${id}`, orders)
+        //         console.log(res.data);
+
+        //         if (res.data) {
+        //             alert("order deleted successfully")
+        //             deleteProduct();
+        //         }
+        //     } catch (e) {
+        //         console.log(e);
+        //     }
+
+        // }
+        else {
+            alert("pfbsdbsdk")
+        }
+
     }
     return (
         <section className="fluid-container">
@@ -51,6 +82,7 @@ const ManageOrder = () => {
                                             <th className="" scope="col">Order Date</th>
                                             <th className="" scope="col">Delivery Date</th>
                                             <th className="" scope="col">Acton</th>
+                                            <th className="" scope="col">View Final sample</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -60,10 +92,11 @@ const ManageOrder = () => {
                                             <td className="">{order.measurement}</td>
                                             <td className="">{order.quantity}</td>
                                             <td className="">{order.totalAmount}</td>
-                                            <td className="">{order.orderDate}</td>
-                                            <td className="">{order.deliveryDate}</td>
+                                            <td className="">{(new Date(order.orderDate).toDateString("dd/MM/yyyy"))}</td>
+                                            <td className="">{(new Date(order.deliveryDate).toDateString("dd/MM/yyyy"))}</td>
                                             <td className=""><button className="btn btn-danger mt-3 mr-2">Edit</button>
                                                 <button className="btn btn-danger mt-3" onClick={() => handleDelete(order.id)}>Delete</button></td>
+                                            <td className=""><button className="btn btn-danger mt-3"><Link to={`/viewFiProduct/${order.id}`} className="text-white">view Final Sample</Link></button></td>
                                         </tr>
                                     </tbody>
                                 </table>

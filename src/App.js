@@ -41,6 +41,10 @@ import ViewStatus from './components/Buyer/ViewStatus/ViewStatus';
 import ShowSample from './components/Sample/ShowSample/ShowSample';
 import AddBuyer from './components/Marchandiser/AddBuyer/AddBuyer';
 import ManageBuyer from './components/Marchandiser/ManageBuyer/ManageBuyer';
+import FinalSample from './components/FinalSample/FinalSample';
+import ShowProduct from './components/Production/ShowProduct/ShowProduct';
+import FinalProduct from './components/FinalProduct/FinalProduct';
+import Report from './components/Report/Report';
 
 axios.defaults.baseURL = 'http://localhost:5000'
 
@@ -84,9 +88,16 @@ function App() {
         <Route path ="/viewFiSample/:id">
           <ViewFinalSample></ViewFinalSample>
         </Route>
-        <Route path ="/viewFiProduct">
+        <Route path ="/viewFiProduct/:id">
           <ViewFinalProduct></ViewFinalProduct>
         </Route>
+        <Route path ="/finalSample">
+          <FinalSample></FinalSample>
+        </Route>
+        <Route path ="/finalProduct">
+          <FinalProduct></FinalProduct>
+        </Route>
+
         {/*------------------------ Buyer-------------------------------- */}
         <Route path ="/addSample">
           <SampleInfo></SampleInfo>
@@ -113,11 +124,17 @@ function App() {
         <Route path ="/viewOrderStatus">
           <OrderStatus></OrderStatus>
         </Route>
+        <Route path ="/addStatus/:id">
+          <OrderStatus></OrderStatus>
+        </Route>
         <Route path ="/addBuyer">
           <AddBuyer></AddBuyer>
         </Route>
         <Route path ="/manageBuyer">
           <ManageBuyer></ManageBuyer>
+        </Route>
+        <Route path ="/report">
+          <Report></Report>
         </Route>
         {/* ----------------------------Sample----------------------------------- */}
         <Route path ="/addFSampleImg/:id">
@@ -130,11 +147,14 @@ function App() {
           <ShowSample></ShowSample>
         </Route>
           {/* ----------------------------Production----------------------------------- */}
-          <Route path ="/addFProImg">
+          <Route path ="/addFProImg/:id">
           <ProductionImg></ProductionImg>
         </Route>
         <Route path ="/manageFProImg">
           <ManageProImg></ManageProImg>
+        </Route>
+        <Route path ="/showOrder">
+          <ShowProduct></ShowProduct>
         </Route>
         {/* --------------------------CAD------------------- */}
         <Route path ="/addSQntyFab">

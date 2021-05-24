@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import MarchanSidebar from '../MarchanSidebar/MarchanSidebar';
 
 const OrderStatus = () => {
+    const {id} = useParams();
     const [orders,setOrders]=useState()
-    const [o_id,setid]=useState(-1)
+    // const [o_id,setid]=useState(-1)
 
     useEffect(()=>{
         const load=async()=>{
@@ -20,33 +22,35 @@ const OrderStatus = () => {
     // }
     
         // useEffect(()=>{
-        //     const showStatus=async()=>{
-        //         const res=await axios.get('/status')
+        //     const showStatus=async(id)=>{
+        //         const res=await axios.get(`/status/${id}`)
         //         setOrders(res.data)
         //     }
-        //     showStatus()
-        // },[])
+        //     showStatus(id)
+        // },[id])
     
     
     
-    const onSelect= (e)=>{
-        const id=e.target.id
-        setid(id)
-    }
-
-    const onSubmit=async()=>{
+    // const onSelect= (e)=>{
+    //     const id=e.target.id
+    //     setid(id)
+    // }
+  
+    const handleSubmit = async (id,e) => {
         const orderStatus={
             status: "confirm",
-            order_id: o_id
         }
-
-       const res= await axios.post('/addStatus',orderStatus)
-       if(res.data){
-           alert("Do you want to confirm?")
-          
-       }
-       console.log(res.data)
-    }
+        try {
+            const res= await axios.post(`/addStatus/${id}`,orderStatus)
+          console.log(res.data);
+          if (res.data) {
+            alert("Do you want to confirm?")
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      }
+  
     return (
         <section className="fluid-container">
             <div className="row mx-0">
@@ -75,15 +79,16 @@ const OrderStatus = () => {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td className=""onClick={onSelect} id={order.id} key={order.id}>{order.productName}</td>
+                                        {/* onClick={onSelect} id={order.id} key={order.id} */}
+                                            <td className="">{order.productName}</td>
                                             <td className="">{order.color}</td>
                                             <td className="">{order.measurement}</td>
                                             <td className="">{order.quantity}</td>
                                             <td className="">{order.totalAmount}</td>
-                                            <td className="">{order.orderDate}</td>
-                                            <td className="">{order.deliveryDate}</td>
+                                            <td className="">{(new Date(order.orderDate).toDateString("dd/MM/yyyy"))}</td>
+                                            <td className="">{(new Date(order.deliveryDate).toDateString("dd/MM/yyyy"))}</td>
                                             <td className="">{order.status}</td>
-                                            <button onClick={onSubmit}>Confirm</button>
+                                            <button onClick={()=>handleSubmit(order.id)}>Confirm</button>
                                         </tr>
                                     </tbody>
                                 </table>

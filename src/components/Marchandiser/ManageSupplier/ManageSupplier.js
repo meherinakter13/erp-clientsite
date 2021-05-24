@@ -4,6 +4,24 @@ import MarchanSidebar from '../MarchanSidebar/MarchanSidebar';
 
 const ManageSupplier = () => {
     const [suppliers, setSuppliers] = useState([])
+
+    const onChange = (e) => {
+        setSuppliers({ ...suppliers, [e.target.name]: e.target.value })
+    }
+
+    const handleEdit = async () => {
+        try {
+            const res = await axios.patch(`/updateSupplier/`, suppliers)
+            console.log(res.data);
+            if (res.data) {
+                alert("Supplier added successfully")
+
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     useEffect(() => {
         fetch('http://localhost:5000/supplier')
             .then(res => res.json())
@@ -62,9 +80,9 @@ const ManageSupplier = () => {
                                         <td className="">{supplier.quantity}</td>
                                         <td className="">{supplier.materialName}</td>
                                         <td className="">{supplier.totalAmount}</td>
-                                        <td className="">{supplier.orderDate}</td>
-                                        <td className="">{supplier.deliveryDate}</td>
-                                        <td className=""><button className="btn btn-danger mt-3 mr-2">Edit</button>
+                                        <td className="">{(new Date(supplier.orderDate).toDateString("dd/MM/yyyy"))}</td>
+                                        <td className="">{(new Date(supplier.deliveryDate).toDateString("dd/MM/yyyy"))}</td>
+                                        <td className=""><button className="btn btn-danger mt-3 mr-2"onClick={handleEdit}>Edit</button>
                                             <button className="btn btn-danger mt-3" onClick={() => handleDelete(supplier.id)}>Delete</button></td>
                                     </tr>
                                 </tbody>

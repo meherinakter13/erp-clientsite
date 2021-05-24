@@ -1,50 +1,54 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import'./MarchanSidebar.css';
+import './MarchanSidebar.css';
 
 const MarchanSidebar = () => {
     return (
         <div className="sidebar py-5 px-4" style={{ height: "100vh" }}>
             <ul className="list-unstyled">
             <li>
+                    <Link to="/marchandiser-dashboard" className="text-white">
+                        <span>Dashboard</span>
+                    </Link>
+                </li>
+                <li>
                     <Link to="/addBuyer" className="text-white">
                         <span>Add Buyer</span>
                     </Link>
                 </li>
-            
-            <li>
+                <li>
                     <Link to="/manageBuyer" className="text-white">
                         <span>Manage Buyer</span>
                     </Link>
                 </li>
-            <li>
+                <li>
                     <Link to="/addSupplier" className="text-white">
                         <span>Add Supplier</span>
                     </Link>
                 </li>
                 <li>
                     <Link to="/manageSupplier" className="text-white">
-                         <span>Manage Supplier info</span>
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/viewSample" className="text-white">
-                        <span>View Sample info</span>
+                        <span>Manage Supplier info</span>
                     </Link>
                 </li>
                 <li>
                     <Link to="/viewOrderStatus" className="text-white">
-                         <span>view Order info</span>
+                        <span>view Order info</span>
                     </Link>
                 </li>
                 <li>
-                    <Link to="/viewFiSample" className="text-white">
-                        <span>View Final Sample</span>
+                    <Link to="/finalSample" className="text-white">
+                        <span>View All Sample</span>
                     </Link>
                 </li>
                 <li>
-                    <Link to="/viewFiProduct" className="text-white">
-                         <span>View Final Product</span>
+                    <Link to="/finalProduct" className="text-white">
+                        <span>View All Product</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/report" className="text-white">
+                        <span>View Report</span>
                     </Link>
                 </li>
 

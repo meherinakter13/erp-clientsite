@@ -26,7 +26,7 @@ const QntyFabric = () => {
         setid(id)
     }
 
-    const onSubmit = async () => {
+    const handleSubmit = async () => {
         const cad = {
             qnty_fabric: q,
             sample_id: s_id,
@@ -50,7 +50,7 @@ const QntyFabric = () => {
             <div className="col-md-9 mt-5 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
                 <h4>Add Quantity of fabric for Sample</h4>
                 {/* <p>{JSON.stringify(samples)}</p> */}
-
+<form onSubmit={handleSubmit}>
 
                 {samples && samples.map((item) => {
                     //item.image
@@ -61,12 +61,12 @@ const QntyFabric = () => {
                 <br /><br />
                 <label htmlFor="">Quantity of fabric</label>
                 <br />
-                <input type="text" onChange={(e) => setQ(e.target.value)}/>
+                <input type="number" min ="1" onChange={(e) => setQ(e.target.value)}required/>
 
                 <br /><br />
 
-                <button onClick={onSubmit}> submit</button>
-
+                <input type="submit" class="btn btn-danger"value="Submit"/> 
+                </form>
             </div>
         </section>
     );

@@ -7,7 +7,7 @@ const Define = {
     D_Marchandiser: "Marchandiser",
     D_Buyer: "Buyer",
     D_Production: "Production",
-    D_Sample: "Sample",
+    D_Sample: "Sample"
 }
 
 export default Define
