@@ -15,41 +15,46 @@ const OrderStatus = () => {
         }
         load()
     },[])
-    // const statusUpdated = () => {
-    //     fetch('http://localhost:5000/status')
-    //         .then(res => res.json())
-    //         .then(data => setOrders(data))
-    // }
+
+    const statusUpdated = () => {
+        fetch('http://localhost:5000/order')
+            .then(res => res.json())
+            .then(data => setOrders(data))
+    }
+
     
-        // useEffect(()=>{
-        //     const showStatus=async(id)=>{
-        //         const res=await axios.get(`/status/${id}`)
-        //         setOrders(res.data)
-        //     }
-        //     showStatus(id)
-        // },[id])
-    
-    
-    
-    // const onSelect= (e)=>{
-    //     const id=e.target.id
-    //     setid(id)
-    // }
-  
-    const handleSubmit = async (id,e) => {
-        const orderStatus={
-            status: "confirm",
-        }
+     const handleRejectBtn = async (id,e) => {
+        const status = 'Rejected'
+        const user = { id, status };
         try {
-            const res= await axios.post(`/addStatus/${id}`,orderStatus)
+            const res= await axios.put(`/updateStatus/${id}`,user)
           console.log(res.data);
           if (res.data) {
-            alert("Do you want to confirm?")
+            alert("Do you want to reject?")
+            statusUpdated();
           }
         } catch (e) {
           console.log(e);
         }
       }
+
+
+    const handleConfirmBtn = async(id) => {
+
+        const status = 'Confirmed'
+        const user = { id, status };
+        try {
+            const res= await axios.put(`/updateStatus/${id}`,user)
+          console.log(res.data);
+          if (res.data) {
+            alert("Do you want to confirm?")
+            statusUpdated();
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      }
+
   
     return (
         <section className="fluid-container">
@@ -88,7 +93,10 @@ const OrderStatus = () => {
                                             <td className="">{(new Date(order.orderDate).toDateString("dd/MM/yyyy"))}</td>
                                             <td className="">{(new Date(order.deliveryDate).toDateString("dd/MM/yyyy"))}</td>
                                             <td className="">{order.status}</td>
-                                            <button onClick={()=>handleSubmit(order.id)}>Confirm</button>
+                                            <td>
+                                        <button onClick={() => handleRejectBtn(order.id)} className="btn btn-info m-2">Reject</button>
+                                        <button onClick={() => handleConfirmBtn(order.id)} className="btn btn-success m-2">Confirm</button>
+                                    </td>
                                         </tr>
                                     </tbody>
                                 </table>

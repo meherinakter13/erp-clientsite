@@ -56,6 +56,7 @@ const OrderInfo = () => {
             console.log(e);
         }
     }
+    
 
     return (
         <section>

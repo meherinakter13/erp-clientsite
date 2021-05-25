@@ -5,7 +5,7 @@ import ProductionSidebar from '../ProductionSidebar/ProductionSidebar';
 const ShowProduct = () => {
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/order')
+        fetch('http://localhost:5000/ordersStatus')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])

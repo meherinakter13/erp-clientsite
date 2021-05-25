@@ -26,11 +26,6 @@ const BuyerSidebar = () => {
                          <span>Manage Order info</span>
                     </Link>
                 </li>
-                <li>
-                    <Link to="/viewStatus" className="text-white">
-                         <span>View Order Status</span>
-                    </Link>
-                </li>
 
             </ul>
         </div >

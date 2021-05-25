@@ -28,7 +28,7 @@ const ManageOrder = () => {
 
     const handleDelete = async (id) => {
         
-          if (deleteDate2 > new Date().getDate() || deleteDate === new Date().getDate()){
+          if (deleteDate2 >= new Date().getDate() || deleteDate === new Date().getDate()){
             try {
                 const res = await axios.delete(`/deleteOrder/${id}`, orders)
                 console.log(res.data);
@@ -81,8 +81,9 @@ const ManageOrder = () => {
                                             <th className="" scope="col">Total Amount</th>
                                             <th className="" scope="col">Order Date</th>
                                             <th className="" scope="col">Delivery Date</th>
+                                            <th className="" scope="col">Order Status</th>
                                             <th className="" scope="col">Acton</th>
-                                            <th className="" scope="col">View Final sample</th>
+                                            <th className="" scope="col">View Final Product</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -94,6 +95,7 @@ const ManageOrder = () => {
                                             <td className="">{order.totalAmount}</td>
                                             <td className="">{(new Date(order.orderDate).toDateString("dd/MM/yyyy"))}</td>
                                             <td className="">{(new Date(order.deliveryDate).toDateString("dd/MM/yyyy"))}</td>
+                                            <td className="">{order.status}</td>
                                             <td className=""><button className="btn btn-danger mt-3 mr-2">Edit</button>
                                                 <button className="btn btn-danger mt-3" onClick={() => handleDelete(order.id)}>Delete</button></td>
                                             <td className=""><button className="btn btn-danger mt-3"><Link to={`/viewFiProduct/${order.id}`} className="text-white">view Final Sample</Link></button></td>

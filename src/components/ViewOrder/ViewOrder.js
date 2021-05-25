@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const ViewOrder = () => {
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/get_all_orders')
+        fetch('http://localhost:5000/ordersStatus')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
