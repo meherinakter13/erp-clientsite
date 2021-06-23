@@ -1,17 +1,18 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ProductionSidebar from '../ProductionSidebar/ProductionSidebar';
+import { Link } from 'react-router-dom';
 
 const ManageProImg = () => {
     const [products ,setProducts] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/fProduct')
+        fetch('http://localhost:5000/get_all_product_img')
         .then(res =>res.json())
         .then(data => setProducts(data))
     },[])
 
     const deleteProduct = () => {
-        fetch(`http://localhost:5000/fProduct`)
+        fetch(`http://localhost:5000/get_all_product_img`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }
@@ -31,7 +32,9 @@ const ManageProImg = () => {
     }
     return (
         <div className="fluid-container">
-        <h1>Production Dashboard</h1>
+         <div style={{ border: "3px solid #076270" }} className="text-center">
+            <h1>Production Dashboard</h1>
+            </div>
      <div className="row mx-0">
          <div className='col-md-2 p-0'>
            <ProductionSidebar></ProductionSidebar>
@@ -60,8 +63,9 @@ const ManageProImg = () => {
                      <td className="w-25">{product.measurement}</td>
                      <td className="w-25">{product.color}</td>
                      <td className="w-25">{product.quantity}</td>
-                     <td className="w-25"><button className ="btn btn-danger mt-3">Edit</button></td>
-                     <td className="w-25"><button className ="btn btn-danger mt-3" onClick = {()=>handleDelete(product.id)}>Delete</button></td>
+                     <td className="w-25">
+                     <button className="btn btn-danger mt-3 mr-2"><Link to ={`/editPimg/${product.id}`}className="text-white">Edit</Link></button>
+                         <button className ="btn btn-danger mt-3" onClick = {()=>handleDelete(product.id)}>Delete</button></td>
                      </tr>
                  </tbody>
              </table>

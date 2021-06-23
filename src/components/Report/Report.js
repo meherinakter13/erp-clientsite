@@ -20,7 +20,7 @@ const Report = () => {
     // order-------------------------
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/get_all_orders')
+        fetch('http://localhost:5000/get_all_Payment')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
@@ -35,11 +35,11 @@ const Report = () => {
     };
 
 
-    var clickedFromDate = selectedFromDate.getDate()
-    var clickedToDate = selectedToDate.getDate()
+    var clickedFromDate = selectedFromDate.getTime()
+    var clickedToDate = selectedToDate.getTime()
 
     const handleDonation = () => {
-        let newList = orders.filter(dn => new Date(dn.orderDate).getDate() >= clickedFromDate && new Date(dn.orderDate).getDate() <= clickedToDate)
+        let newList = orders.filter(dn => new Date(dn.orderDate).getTime() >= clickedFromDate && new Date(dn.orderDate).getTime() <= clickedToDate)
         console.log(newList)
         setDonationCheck(newList)
         setDonationStatus(true)
@@ -51,7 +51,7 @@ const Report = () => {
 
     let totalDonation = 0;
     for (let i = 0; i < donationCheck.length; i++) {
-        const element = parseFloat(donationCheck[i].totalAmount);
+        const element = parseFloat(donationCheck[i].paid_amount);
         totalDonation = totalDonation + element;
     }
     console.log(totalDonation)
@@ -74,7 +74,7 @@ const Report = () => {
 
 
     const handleWS = () => {
-        let newList = WS.filter(WS => new Date(WS.orderDate).getDate() >= clickedFromDate && new Date(WS.orderDate).getDate() <= clickedToDate)
+        let newList = WS.filter(WS => new Date(WS.orderDate).getTime() >= clickedFromDate && new Date(WS.orderDate).getTime() <= clickedToDate)
         console.log(newList)
         setWSCheck(newList)
         setWSStatus(true)
@@ -91,8 +91,10 @@ const Report = () => {
     console.log(totalWSCost)
     return (
         <section>
+             <div style={{ border: "3px solid #076270" }} className="text-center">
             <h1>Marchandiser Dashboard</h1>
-            <div className="container-fluid row ">
+            </div>
+            <div className="fluid-container row ">
                 <div className="col-md-2">
                     <MarchanSidebar></MarchanSidebar>
                 </div>
@@ -114,7 +116,7 @@ const Report = () => {
                                 margin="normal"
                                 id="date-picker-dialog"
                                 label="From"
-                                format="MM/dd/yyyy"
+                                format="dd/MM/yyyy"
                                 minDate="2021-01-01"
                                 value={selectedFromDate}
                                 onChange={handleFromDateChange}
@@ -131,7 +133,7 @@ const Report = () => {
                                 margin="normal"
                                 id="date-picker-dialog"
                                 label="TO"
-                                format="MM/dd/yyyy"
+                                format="dd/MM/yyyy"
                                 minDate="2021-01-01"
                                 value={selectedToDate}
                                 onChange={handleToDateChange}
@@ -142,15 +144,15 @@ const Report = () => {
                         </MuiPickersUtilsProvider>
 
                         <div style={{ float: 'right' }} className="mb-4 mt-3 mr-5">
-                            <button onClick={handleDonation} className="btn btn-success ms-5 mt-2">Order</button>
+                            <button onClick={handleDonation} className="btn btn-danger ms-5 mt-2">Order</button>
 
-                            <button onClick={handleWS} className="btn btn-info ms-2 mt-2">Supplier</button>
+                            <button onClick={handleWS} className="btn btn-info ml-3 ms-2 mt-2">Material</button>
                         </div>
                     </div>
 
 
 
-                    {/* Donation Stats */}
+                    {/* Order Status */}
                     {donationStatus && <div id="donate">
                         {
                             <table id="table" class="table text-center mb-5">
@@ -158,22 +160,28 @@ const Report = () => {
                                     <tr>
                                         {/* <th scope="col">Name</th>
                                 <th scope="col" >Email</th> */}
+                                <th scope="col">Buyer Email</th>
                                         <th scope="col">Product Name</th>
                                         <th scope="col">Order date</th>
                                         <th scope="col">Delivery date</th>
                                         <th scope="col">Amount</th>
+                                        <th scope="col">Order Status</th>
+                                        <th scope="col">Payment Status</th>
                                     </tr>
                                 </thead>
                                 {
-                                    donationCheck.map(donation =>
+                                    donationCheck.map(order =>
                                         <tbody>
                                             <tr>
                                                 {/* <th scope="row">{donation.name || donation.email || ''}</th> */}
                                                 {/* <td>{donation.email}</td> */}
-                                                <td><strong>{donation.productName}</strong></td>
-                                                <td><strong>{donation.orderDate}</strong></td>
-                                                <td><strong>{donation.deliveryDate}</strong></td>
-                                                <td><strong>{donation.totalAmount} Tk</strong></td>
+                                                <td><strong>{order.email}</strong></td>
+                                                <td><strong>{order.productName}</strong></td>
+                                                <td><strong>{(new Date(order.orderDate).toDateString("dd/MM/yyyy"))}</strong></td>
+                                                <td><strong>{(new Date(order.deliveryDate).toDateString("dd/MM/yyyy"))}</strong></td>
+                                                <td><strong>{order.totalAmount} Tk</strong></td>
+                                                <td><strong>{order.status}</strong></td>
+                                                <td><strong>{order.payment_status}</strong></td>
                                             </tr>
                                         </tbody>
                                     )
@@ -181,7 +189,7 @@ const Report = () => {
                             </table>
                         }<hr />
                         <div style={{ marginLeft: '80%' }}>
-                            <strong>Total: {totalDonation} Tk</strong>
+                            <strong>Total Amount: {totalDonation} Tk</strong>
                         </div>
                         <hr />
                     </div>}
@@ -212,9 +220,9 @@ const Report = () => {
                                                 <th scope="row">{WS.email}</th>
                                                 <th scope="row">{WS.materialName}</th>
                                                 <th scope="row">{WS.quantity}</th>
-                                                <th scope="row">{WS.orderDate}</th>                                                
-                                                <th scope="row">{WS.deliveryDate}</th>
-                                                <th scope="row">{WS.totalAmount}</th>
+                                                <th scope="row">{(new Date(WS.orderDate).toDateString("dd/MM/yyyy"))}</th>                                                
+                                                <th scope="row">{(new Date(WS.deliveryDate).toDateString("dd/MM/yyyy"))}</th>
+                                                <th scope="row">{WS.totalAmount} Tk</th>
                                             </tr>
                                         </tbody>
                                     )
@@ -222,7 +230,7 @@ const Report = () => {
                             </table>
                         }<hr />
                         <div style={{ marginLeft: '80%' }}>
-                            <strong>Total: {totalWSCost} Tk</strong>
+                            <strong>Total Amount: {totalWSCost} Tk</strong>
                         </div>
                         <hr />
                     </div>}

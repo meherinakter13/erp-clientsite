@@ -11,10 +11,11 @@ const ViewSample = () => {
     }, [])
     return (
         <section className="fluid-container">
+            <h1>All Sample Details</h1>
         <div className="row mx-0">
-            <div className='col-md-2 p-0'>
+            {/* <div className='col-md-2 p-0'>
               
-            </div>
+            </div> */}
             <div className="col-md-10 p-4 mx-auto">
                 <div className="row">
                     {
@@ -25,6 +26,7 @@ const ViewSample = () => {
                                         <th className="w-25" scope="col">Measurement</th>
                                         <th className="w-25" scope="col">Fabric</th>
                                         <th className="w-25" scope="col">Image</th>
+                                        <th className="w-25" scope="col">Feedback</th>
 
                                     </tr>
                                 </thead>
@@ -33,6 +35,7 @@ const ViewSample = () => {
                                         <td className="">{sample.measurement}</td>
                                         <td className="">{sample.fabric}</td>
                                         <td className=""><img style={{width:"150px",height:"150px"}} src={sample.image} alt=""/></td>
+                                        <td className="">{sample.feedback}</td>
                                     </tr>
                                 </tbody>
                             </table>

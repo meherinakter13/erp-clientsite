@@ -1,17 +1,20 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import IESidebar from '../IESidebar/IESidebar';
+import { Link } from 'react-router-dom';
 
 const ManageTimeCost = () => {
     const [samples ,setSamples] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/timeCost')
+        fetch('http://localhost:5000/get_all_smaple_tc')
         .then(res =>res.json())
-        .then(data => setSamples(data))
+        .then(data => {setSamples(data)
+            console.log("==",data)
+        })
     },[])
 
     const deleteProduct = () => {
-        fetch(`http://localhost:5000/timeCost`)
+        fetch(`http://localhost:5000/get_all_smaple_tc`)
             .then(res => res.json())
             .then(data => setSamples(data))
     }
@@ -31,7 +34,9 @@ const ManageTimeCost = () => {
     }
     return (
         <div className="fluid-container">
-        <h1>IE Dashboard</h1>
+         <div style={{ border: "3px solid #076270" }} className="text-center">
+            <h1>IE Dashboard</h1>
+            </div>
      <div className="row mx-0">
          <div className='col-md-2 p-0'>
            <IESidebar></IESidebar>
@@ -54,8 +59,9 @@ const ManageTimeCost = () => {
                      <tr>
                      <td className="w-25">{sample.timing}</td>
                      <td className="w-25">{sample.costing}</td>
-                     <td className=""><button className ="btn btn-danger mt-3">Edit</button></td>
-                     <td className=""><button className ="btn btn-danger mt-3" onClick = {()=>handleDelete(sample.id)}>Delete</button></td>
+                     <td className="">
+                     <button className="btn btn-danger mt-3 mr-2"><Link to ={`/editSaTime/${sample.id}`}className="text-white">Edit</Link></button>
+                         <button className ="btn btn-danger mt-3" onClick = {()=>handleDelete(sample.id)}>Delete</button></td>
                      </tr>
                  </tbody>
              </table>

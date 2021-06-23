@@ -1,26 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import MarchanSidebar from '../MarchanSidebar/MarchanSidebar';
 
 const ManageSupplier = () => {
     const [suppliers, setSuppliers] = useState([])
-
-    const onChange = (e) => {
-        setSuppliers({ ...suppliers, [e.target.name]: e.target.value })
-    }
-
-    const handleEdit = async () => {
-        try {
-            const res = await axios.patch(`/updateSupplier/`, suppliers)
-            console.log(res.data);
-            if (res.data) {
-                alert("Supplier added successfully")
-
-            }
-        } catch (e) {
-            console.log(e);
-        }
-    }
 
     useEffect(() => {
         fetch('http://localhost:5000/supplier')
@@ -49,7 +33,9 @@ const ManageSupplier = () => {
     }
     return (
         <section className="fluid-container">
-        <h1>Marchandiser Dashboard</h1>
+         <div style={{ border: "3px solid #076270" }} className="text-center">
+            <h1>Marchandiser Dashboard</h1>
+            </div>
         <div className="row mx-0">
             <div className='col-md-2 p-0'>
                 <MarchanSidebar></MarchanSidebar>
@@ -82,7 +68,7 @@ const ManageSupplier = () => {
                                         <td className="">{supplier.totalAmount}</td>
                                         <td className="">{(new Date(supplier.orderDate).toDateString("dd/MM/yyyy"))}</td>
                                         <td className="">{(new Date(supplier.deliveryDate).toDateString("dd/MM/yyyy"))}</td>
-                                        <td className=""><button className="btn btn-danger mt-3 mr-2"onClick={handleEdit}>Edit</button>
+                                        <td className=""><button className="btn btn-danger mt-3 mr-2"><Link to ={`/editSupplier/${supplier.id}`}className="text-white">Edit</Link></button>
                                             <button className="btn btn-danger mt-3" onClick={() => handleDelete(supplier.id)}>Delete</button></td>
                                     </tr>
                                 </tbody>

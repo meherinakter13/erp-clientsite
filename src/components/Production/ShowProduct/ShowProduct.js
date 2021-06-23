@@ -11,7 +11,9 @@ const ShowProduct = () => {
     }, [])
     return (
         <section className="fluid-container">
+             <div style={{ border: "3px solid #076270" }} className="text-center">
             <h1>Production Dashboard</h1>
+            </div>
             <div className="row mx-0">
                 <div className='col-md-2 p-0'>
                     <ProductionSidebar></ProductionSidebar>

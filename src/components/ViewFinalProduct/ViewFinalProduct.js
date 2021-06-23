@@ -12,9 +12,10 @@ const ViewFinalProduct = () => {
     return (
         <section className="fluid-container">
         <div className="row mx-0">
-            <div className='col-md-2 p-0'>
+            {/* <div className='col-md-2 p-0'>
               
-            </div>
+            </div> */}
+            <h1>Final Product</h1>
             <div className="col-md-10 p-4 mx-auto">
                 <div className="row">
                     {
@@ -38,10 +39,10 @@ const ViewFinalProduct = () => {
                                         <td className="">{product.productname}</td>
                                         <td className="">{product.measurement}</td>
                                         <td className="">{product.color}</td>
-                                        <td className="">{product.quantity}</td>
-                                        <td className="">{product.qnty_fabric}</td>
-                                        <td className="">{product.timing}</td>
-                                        <td className="">{product.costing}</td>
+                                        <td className="">{product.quantity} pieces</td>
+                                        <td className="">{product.qnty_fabric} inch</td>
+                                        <td className="">{product.timing} days</td>
+                                        <td className="">{product.costing} TK</td>
                                     </tr>
                                 </tbody>
                             </table>

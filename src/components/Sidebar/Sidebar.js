@@ -6,32 +6,32 @@ const Sidebar = () => {
         <div className="sidebar py-5 px-4" style={{ height: "100vh" }}>
         <ul className="list-unstyled">
         <li>
-                <Link to="/login" className="text-white">
+                <Link to="/buyer-dashboard" className="text-white">
                     <span>Buyer</span>
                 </Link>
             </li>
             <li>
-                <Link to="/login" className="text-white">
+                <Link to="/IE-dashboard" className="text-white">
                      <span>IE</span>
                 </Link>
             </li>
             <li>
-                <Link to="/login" className="text-white">
+                <Link to="/CAD-dashboard" className="text-white">
                     <span>CAD</span>
                 </Link>
             </li>
             <li>
-                <Link to="/login" className="text-white">
+                <Link to="/marchandiser-dashboard" className="text-white">
                      <span>Marchandiser</span>
                 </Link>
             </li>
             <li>
-                <Link to="/login" className="text-white">
+                <Link to="/sample-dashboard" className="text-white">
                     <span>Sample</span>
                 </Link>
             </li>
             <li>
-                <Link to="/login" className="text-white">
+                <Link to="/production-dashboard" className="text-white">
                      <span>Production</span>
                 </Link>
             </li>

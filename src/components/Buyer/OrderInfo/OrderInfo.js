@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, {useContext, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -7,9 +7,12 @@ import {
     KeyboardDatePicker,
 } from '@material-ui/pickers';
 import BuyerSidebar from '../BuyerSidebar/BuyerSidebar';
+import { UserContext } from '../../../App';
+
 
 const OrderInfo = () => {
-    
+   
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [orders, setOrders] = useState({
         productName:"",
         color:"",
@@ -17,7 +20,9 @@ const OrderInfo = () => {
         quantity: "",
         totalAmount: "",
         orderDate: new Date(),
-        deliveryDate: new Date()
+        deliveryDate: new Date(),
+        name:loggedInUser.name,
+        email:loggedInUser.email
     })
 
     //Time
@@ -60,8 +65,10 @@ const OrderInfo = () => {
 
     return (
         <section>
+             <div style={{ border: "3px solid #076270" }} className="text-center">
             <h1>Buyer Dashboard</h1>
-            <div className="container-fluid row ">
+            </div>
+            <div className="fluid-container row ">
             <div className="col-md-2">
                 <BuyerSidebar></BuyerSidebar>
             </div>
@@ -95,7 +102,7 @@ const OrderInfo = () => {
                             <KeyboardDatePicker
 
                                 margin="normal"
-                                // minDate={today}
+                                minDate={today}
 
                                 id="date-picker-dialog"
 

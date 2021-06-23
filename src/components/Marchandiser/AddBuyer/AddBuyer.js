@@ -31,8 +31,10 @@ const AddBuyer = () => {
     return (
 
         <section>
+             <div style={{ border: "3px solid #076270" }} className="text-center">
             <h1>Marchandiser Dashboard</h1>
-            <div className="container-fluid row ">
+            </div>
+            <div className="fluid-container row ">
                 <div className="col-md-2">
                     <MarchanSidebar></MarchanSidebar>
                 </div>

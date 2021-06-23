@@ -1,27 +1,43 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
+import { UserContext } from '../../App';
 import Define from '../Define';
+import "firebase/auth";
+import firebase from "firebase/app";
 
 const Login = () => {
-    const history = useHistory()
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const history = useHistory();
+    const location = useLocation();
+    const { from } = location.state || { from: { pathname: "/" } };
 
     const [user, setUser] = useState({})
 
     const onChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value })
+        
     }
     const onSubmit = async (e) => {
         e.preventDefault()
         try {
             const res = await axios.post('/login', user)
+            const {name, email} = user;
+            const signedInUser = {
+                name: name,
+                email: email
+            }
+            setLoggedInUser(signedInUser) ;
+            // storeAuthToken();
+            history.replace(from);
             console.log(res.data);
 
             if (!res.data.error) {
                 if (Define.D_Buyer == res.data.data.department) {
                     localStorage.setItem(Define.C_USER, JSON.stringify(res.data.data))
                     history.push('/buyer-dashboard')
+                
                 } 
                else if (Define.D_IE == res.data.data.department) {
                     localStorage.setItem(Define.C_USER, JSON.stringify(res.data.data))
@@ -47,12 +63,20 @@ const Login = () => {
                     ////
                 }
             } else {
-                console.log('login faild', res.data.msg);
+                console.log('login failed', res.data.msg);
             }
         } catch (e) {
             console.log(e);
         }
     }
+    // const storeAuthToken = () =>{
+    //     firebase.auth().currentUser.getIdToken( true)
+    //     .then(function(idToken) {
+    //         sessionStorage.setItem('token',idToken);
+    //       })
+    //       .catch(function(error) {
+    //       });
+    // }
     return (
         <div className="container text-center w-25 mt-5 pt-5 bg-info text-white " >
             <form>

@@ -9,10 +9,11 @@ const ViewOrder = () => {
     }, [])
     return (
         <section className="fluid-container">
+            <h1>All Order Details</h1>
             <div className="row mx-0">
-                <div className='col-md-2 p-0'>
+                {/* <div className='col-md-2 p-0'>
                     
-                </div>
+                </div> */}
                 <div className="col-md-10 p-4 mx-auto">
                     <div className="row">
                         {

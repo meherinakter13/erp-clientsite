@@ -10,8 +10,8 @@ const FinalSample = () => {
     },[])
     
     return (
-        <div className="container">
-           {/* <h1>Buyer Dashboard</h1> */}
+        <section className="container">
+           <h1>All Sample List</h1>
         <div className="row mx-0">
             <div className=''>
              
@@ -23,6 +23,7 @@ const FinalSample = () => {
                 <th className="w-25" scope="col">Measurement</th>
                 <th className="w-25" scope="col">Fabric</th>
                 <th className="w-25" scope="col">Image</th>
+                <th className="w-25" scope="col">Feedback</th>
                 <th className="w-25" scope="col">View Final sample</th>
 
                 </tr>
@@ -37,6 +38,7 @@ const FinalSample = () => {
                         <td className="w-25">{sample.measurement}</td>
                         <td className="w-25">{sample.fabric}</td>
                         <td className="w-25"><img style={{width:"150px",height:"150px"}} src={sample.image} alt=""/></td>
+                        <td className="w-25">{sample.feedback}</td>
                         <td className="w-25"><button className ="btn btn-danger mt-3"><Link to ={`/viewFiSample/${sample.id}`}className="text-white">view Final Sample</Link></button></td>
                         </tr>
                     </tbody>
@@ -46,7 +48,7 @@ const FinalSample = () => {
     </div>
     </div>
     </div>
-    </div>
+    </section>
 
     );
 };

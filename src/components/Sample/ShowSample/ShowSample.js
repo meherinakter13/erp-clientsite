@@ -11,7 +11,9 @@ const ShowSample = () => {
     }, [])
     return (
         <section className="fluid-container">
+             <div style={{ border: "3px solid #076270" }} className="text-center">
             <h1>Sample Dashboard</h1>
+            </div>
         <div className="row mx-0">
             <div className='col-md-2 p-0'>
               <SampleSidebar></SampleSidebar>
@@ -26,6 +28,7 @@ const ShowSample = () => {
                                         <th className="w-25" scope="col">Measurement</th>
                                         <th className="w-25" scope="col">Fabric</th>
                                         <th className="w-25" scope="col">Image</th>
+                                        <th className="w-25" scope="col">Feedback</th>
                                         <th className="w-25" scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -34,6 +37,7 @@ const ShowSample = () => {
                                         <td className="">{sample.measurement}</td>
                                         <td className="">{sample.fabric}</td>
                                         <td className=""><img style={{width:"150px",height:"150px"}} src={sample.image} alt=""/></td>
+                                        <td className="">{sample.feedback}</td>
                                         <td><button className="m-5  btn btn-danger"><Link to ={`/addFSampleImg/${sample.id}`} className = "text-white">Add Image</Link> </button></td>
                                     </tr>
                                 </tbody>

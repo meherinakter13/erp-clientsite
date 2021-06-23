@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { storage } from "../../firebase";
 import axios from 'axios';
 import BuyerSidebar from '../BuyerSidebar/BuyerSidebar';
+import { UserContext } from '../../../App';
 
 const SampleInfo = () => {
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
   const [data, setData] = useState({
     measurement: "",
     fabric: "",
-    img_url: ""
+    img_url: "",
+    email:loggedInUser.email
   })
 
   const onChangeData = (e) => {
@@ -62,8 +65,10 @@ const SampleInfo = () => {
   }
 
   return (
-    <section className="container-fluid  " >
-      <h1>Buyer Dashboard</h1>
+    <section className="fluid-container" >
+       <div style={{ border: "3px solid #076270" }} className="text-center">
+            <h1>Buyer Dashboard</h1>
+            </div>
       <div className="row">
         <div className="col-md-2">
           <BuyerSidebar></BuyerSidebar>
@@ -76,7 +81,7 @@ const SampleInfo = () => {
             <br />
             <br />
             <input type="file" onChange={handleChange} required />
-            <button onClick={handleUpload}>Upload</button>
+            <button className="btn btn-success" onClick={handleUpload}>Upload</button>
             <br />
             <br />
             <img style={{ height: "100px", width: "100px" }} src={data.img_url || "http://via.placeholder.com/300"} alt="" />

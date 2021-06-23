@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -37,7 +37,6 @@ import ProductTimeCost from './components/IE/ProductTimeCost/ProductTimeCost';
 import ProductQntyFab from './components/CAD/ProductQntyFab/ProductQntyFab';
 import ViewFinalProduct from './components/ViewFinalProduct/ViewFinalProduct';
 import OrderStatus from './components/Marchandiser/OrderStatus/OrderStatus';
-import ViewStatus from './components/Buyer/ViewStatus/ViewStatus';
 import ShowSample from './components/Sample/ShowSample/ShowSample';
 import AddBuyer from './components/Marchandiser/AddBuyer/AddBuyer';
 import ManageBuyer from './components/Marchandiser/ManageBuyer/ManageBuyer';
@@ -45,11 +44,29 @@ import FinalSample from './components/FinalSample/FinalSample';
 import ShowProduct from './components/Production/ShowProduct/ShowProduct';
 import FinalProduct from './components/FinalProduct/FinalProduct';
 import Report from './components/Report/Report';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Payment from './components/Buyer/Payment/Payment';
+import FeedBack from './components/Buyer/FeedBack/FeedBack';
+import UpdateSupplier from './components/Marchandiser/UpdateSupplier/UpdateSupplier';
+import UpdateQnty from './components/CAD/UpdateQnty/UpdateQnty';
+import ManageProQnty from './components/CAD/ManageProQnty/ManageProQnty';
+import UpdatePQnty from './components/CAD/UpdatePQnty/UpdatePQnty';
+import ManagePTime from './components/IE/ManagePTime/ManagePTime';
+import UpdateSTime from './components/IE/UpdateSTime/UpdateSTime';
+import UpdatePTime from './components/IE/UpdatePTime/UpdatePTime';
+import UpdateSimg from './components/Sample/UpdateSimg/UpdateSimg';
+import UpdatePimg from './components/Production/UpdatePimg/UpdatePimg';
+import FinalProductBuy from './components/Buyer/FinalProductBuy/FinalProductBuy';
+export const UserContext = createContext();
 
 axios.defaults.baseURL = 'http://localhost:5000'
 
+
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
+
+    <UserContext.Provider value ={[loggedInUser, setLoggedInUser]}>
     <Router>
       <Switch>
       <Route exact path ="/">
@@ -61,24 +78,24 @@ function App() {
         <Route path ="/addUser">
           <SignUp></SignUp>
         </Route>
-        <Route path ="/buyer-dashboard">
+        <PrivateRoute path ="/buyer-dashboard">
           <BuyerDashboard></BuyerDashboard>
-        </Route>
-        <Route path ="/IE-dashboard">
+        </PrivateRoute>
+        <PrivateRoute path ="/IE-dashboard">
           <IEDashboard></IEDashboard>
-        </Route>
-        <Route path ="/CAD-dashboard">
+        </PrivateRoute>
+        <PrivateRoute path ="/CAD-dashboard">
           <CADDashboard></CADDashboard>
-        </Route>
-        <Route path ="/marchandiser-dashboard">
+        </PrivateRoute>
+        <PrivateRoute path ="/marchandiser-dashboard">
           <MarchandiserDash></MarchandiserDash>
-        </Route>
-        <Route path ="/production-dashboard">
+        </PrivateRoute>
+        <PrivateRoute path ="/production-dashboard">
           <ProductionDash></ProductionDash>
-        </Route>
-        <Route path ="/sample-dashboard">
+        </PrivateRoute>
+        <PrivateRoute path ="/sample-dashboard">
           <SampleDashboard></SampleDashboard>
-        </Route>
+        </PrivateRoute>
         <Route path ="/viewSample">
           <ViewSample></ViewSample>
         </Route>
@@ -111,20 +128,29 @@ function App() {
         <Route path ="/manageOrder">
           <ManageOrder></ManageOrder>
         </Route>
-        <Route path ="/viewStatus">
-          <ViewStatus></ViewStatus>
+        <Route path ="/showPayment/:id">
+          <Payment></Payment>
+        </Route>
+        <Route path ="/feedback/:id">
+          <FeedBack></FeedBack>
+        </Route>
+        <Route path ="/viewFiProductBuy/:id">
+          <FinalProductBuy></FinalProductBuy>
         </Route>
         {/*------------------------ Marchandiser--------------------------------  */}
+        <Route path ="/marchan-dashboard">
+          <MarchandiserDash></MarchandiserDash>
+        </Route>
         <Route path ="/addSupplier">
           <AddSupplier></AddSupplier>
         </Route>
         <Route path ="/manageSupplier">
           <ManageSupplier></ManageSupplier>
         </Route>
-        <Route path ="/viewOrderStatus">
-          <OrderStatus></OrderStatus>
+          <Route path ="/editSupplier/:id">
+          <UpdateSupplier></UpdateSupplier>
         </Route>
-        <Route path ="/addStatus/:id">
+        <Route path ="/viewOrderStatus">
           <OrderStatus></OrderStatus>
         </Route>
         <Route path ="/addBuyer">
@@ -143,6 +169,9 @@ function App() {
         <Route path ="/manageFSampleImg">
           <ManageSampleImg></ManageSampleImg>
         </Route>
+        <Route path ="/editSaimg/:id">
+          <UpdateSimg></UpdateSimg>
+        </Route>
         <Route path ="/showSample">
           <ShowSample></ShowSample>
         </Route>
@@ -156,6 +185,10 @@ function App() {
         <Route path ="/showOrder">
           <ShowProduct></ShowProduct>
         </Route>
+        <Route path ="/editPimg/:id">
+          <UpdatePimg></UpdatePimg>
+        </Route>
+
         {/* --------------------------CAD------------------- */}
         <Route path ="/addSQntyFab">
           <QntyFabric></QntyFabric>
@@ -163,8 +196,17 @@ function App() {
         <Route path ="/manageSQntyFab">
           <ManageQntyFab></ManageQntyFab>
         </Route>
+        <Route path ="/managePQntyFab">
+          <ManageProQnty></ManageProQnty>
+        </Route>
         <Route path ="/addProQntyFab">
           <ProductQntyFab></ProductQntyFab>
+        </Route>
+        <Route path ="/editSaQnty/:id">
+          <UpdateQnty></UpdateQnty>
+        </Route>
+        <Route path ="/editPQnty/:id">
+          <UpdatePQnty></UpdatePQnty>
         </Route>
         {/* --------------------------IE-------------------  */}
         <Route path ="/addSTime">
@@ -173,11 +215,21 @@ function App() {
         <Route path ="/manageFSTimeCost">
           <ManageTimeCost></ManageTimeCost>
         </Route>
+        <Route path ="/managePTimeCost">
+          <ManagePTime></ManagePTime>
+        </Route>
+        <Route path ="/editSaTime/:id">
+          <UpdateSTime></UpdateSTime>
+        </Route>
+        <Route path ="/editPTime/:id">
+          <UpdatePTime></UpdatePTime>
+        </Route>
         <Route path ="/addProTime">
           <ProductTimeCost></ProductTimeCost>
         </Route>
       </Switch>
     </Router>
+    </UserContext.Provider>
   );
 }
 

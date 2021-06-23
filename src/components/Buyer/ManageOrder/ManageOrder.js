@@ -1,13 +1,16 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { UserContext } from '../../../App';
 import BuyerSidebar from '../BuyerSidebar/BuyerSidebar';
 
 const ManageOrder = () => {
+    
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [orders, setOrders] = useState([])
     const [date, setDate] = useState({})
     useEffect(() => {
-        fetch('http://localhost:5000/order')
+        fetch('http://localhost:5000/orders?email='+loggedInUser.email)
             .then(res => res.json())
             .then(data => {
                 setOrders(data)
@@ -16,7 +19,7 @@ const ManageOrder = () => {
     }, [])
 
     const deleteProduct = () => {
-        fetch(`http://localhost:5000/order`)
+        fetch('http://localhost:5000/orders?email='+loggedInUser.email)
             .then(res => res.json())
             .then(data => setOrders(data))
     }
@@ -60,9 +63,14 @@ const ManageOrder = () => {
         }
 
     }
+    const handlePayment =()=>{
+
+    }
     return (
         <section className="fluid-container">
+             <div style={{ border: "3px solid #076270" }} className="text-center">
             <h1>Buyer Dashboard</h1>
+            </div>
             <div className="row mx-0">
                 <div className='col-md-2 p-0'>
                     <BuyerSidebar></BuyerSidebar>
@@ -96,9 +104,11 @@ const ManageOrder = () => {
                                             <td className="">{(new Date(order.orderDate).toDateString("dd/MM/yyyy"))}</td>
                                             <td className="">{(new Date(order.deliveryDate).toDateString("dd/MM/yyyy"))}</td>
                                             <td className="">{order.status}</td>
-                                            <td className=""><button className="btn btn-danger mt-3 mr-2">Edit</button>
-                                                <button className="btn btn-danger mt-3" onClick={() => handleDelete(order.id)}>Delete</button></td>
-                                            <td className=""><button className="btn btn-danger mt-3"><Link to={`/viewFiProduct/${order.id}`} className="text-white">view Final Sample</Link></button></td>
+                                            <td className="">
+                                                <button className="btn btn-danger mt-3" onClick={() => handleDelete(order.id)}>Cancel</button>
+                                                {order.status==="Confirmed"?order.payment_status==="Recieved"?<button className="btn btn-danger mt-3">paid</button>:<button onClick={()=>handlePayment(order.id)} className="btn btn-danger mt-3 mr-2"><Link to={`/showPayment/${order.id}`} className="text-white">Payment</Link></button>:<></>}
+                                                </td>
+                                            <td className=""><button className="btn btn-danger mt-3"><Link to={`/viewFiProductBuy/${order.id}`} className="text-white">view Final Product</Link></button></td>
                                         </tr>
                                     </tbody>
                                 </table>

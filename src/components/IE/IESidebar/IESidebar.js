@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../../../App';
 import { Link } from 'react-router-dom';
 import'./IESidebar.css';
 
 const IESidebar = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const handleSignOut = () => {
+            let signedOutUser = {
+        
+                name: '',
+                email: ''
+         
+            }
+            setLoggedInUser(signedOutUser);
+    }
     return (
         <div className="sidebar py-5 px-4" style={{ height: "100vh" }}>
         <ul className="list-unstyled">
+        <li>
+                <Link to="/IE-dashboard" className="text-white">
+                    <span>Dashboard</span>
+                </Link>
+            </li>
 
             <li>
                 <Link to="/viewSample" className="text-white">
@@ -29,9 +45,19 @@ const IESidebar = () => {
             </li>
             <li>
                 <Link to="/manageFSTimeCost" className="text-white">
-                     <span>Manage Time Cost</span>
+                     <span>Manage Sample Time Cost</span>
                 </Link>
             </li>
+            <li>
+                <Link to="/managePTimeCost" className="text-white">
+                     <span>Manage Product Time Cost</span>
+                </Link>
+            </li>
+            <li>
+                    <Link to="/login" onClick={handleSignOut} className="text-white">
+                        <span>Logout</span>
+                    </Link>
+                </li>
 
 
         </ul>

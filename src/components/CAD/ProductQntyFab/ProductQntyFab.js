@@ -35,9 +35,11 @@ const ProductQntyFab = () => {
         console.log(res.data)
     }
     return (
-        <section className="container-fluid row " >
+        <section className="fluid-container row " >
             <div className="col-md-3">
-                <h1>CAD Dashboard</h1>
+                 <div style={{ border: "3px solid #076270" }} className="text-center">
+            <h1>CAD Dashboard</h1>
+            </div>
                 <CADSidebar></CADSidebar>
             </div>
             <div className="col-md-9 mt-5 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>

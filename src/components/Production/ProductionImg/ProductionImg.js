@@ -63,8 +63,10 @@ const ProductionImg = () => {
     }
   }
   return (
-    <section className="container-fluid  " >
-      <h1>Production Dashboard</h1>
+    <section className="fluid-container  " >
+       <div style={{ border: "3px solid #076270" }} className="text-center">
+            <h1>Production Dashboard</h1>
+            </div>
       <div className="row">
         <div className="col-md-2">
           <ProductionSidebar></ProductionSidebar>
@@ -88,8 +90,6 @@ const ProductionImg = () => {
             <input onChange={onChangeData} type="text" class="form-control" name="measurement" placeholder=" product measurement" required />
             <label for="exampleInputName">Color</label>
             <input onChange={onChangeData} type="text" class="form-control" name="color" placeholder=" product color" required />
-            <label for="exampleInputName">Quantity</label>
-            <input onChange={onChangeData} type="text" class="form-control" name="quantity" placeholder=" product quantity" required />
             <br />
             <input type="submit" className="btn btn-danger" value="Submit" />
           </form>

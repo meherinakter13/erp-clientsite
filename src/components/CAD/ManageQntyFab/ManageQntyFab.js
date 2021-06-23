@@ -1,17 +1,18 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import CADSidebar from '../CADSidebar/CADSidebar';
+import { Link } from 'react-router-dom';
 
 const ManageQntyFab = () => {
     const [samples, setSamples] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/qntyFab')
+        fetch('http://localhost:5000/get_all_smaple')
             .then(res => res.json())
             .then(data => setSamples(data))
     }, [])
 
     const deleteProduct = () => {
-        fetch(`http://localhost:5000/qntyFab`)
+        fetch(`http://localhost:5000/get_all_smaple`)
             .then(res => res.json())
             .then(data => setSamples(data))
     }
@@ -31,7 +32,9 @@ const ManageQntyFab = () => {
     }
     return (
         <div className="fluid-container">
+             <div style={{ border: "3px solid #076270" }} className="text-center">
             <h1>CAD Dashboard</h1>
+            </div>
             <div className="row mx-0">
                 <div className='col-md-2 p-0'>
                     <CADSidebar></CADSidebar>
@@ -51,9 +54,10 @@ const ManageQntyFab = () => {
                                 <table class="table table-primary">
                                     <tbody>
                                         <tr>
-                                            <td className="w-25">{sample.qnty_fabric}</td>
-                                            <td className=""><button className="btn btn-danger mt-3">Edit</button></td>
-                                            <td className=""><button className="btn btn-danger mt-3" onClick={() => handleDelete(sample.id)}>Delete</button></td>
+                                            <td className="w-25">{sample.qnty_fabric} Kg</td>
+                                            <td className="">
+                                            <button className="btn btn-danger mt-3 mr-2"><Link to ={`/editSaQnty/${sample.id}`}className="text-white">Edit</Link></button>
+                                                <button className="btn btn-danger mt-3" onClick={() => handleDelete(sample.id)}>Delete</button></td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -22,14 +22,14 @@ const MarchandiserDash = () => {
 // order-------------------------
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/ordersStatus')
+        fetch('http://localhost:5000/get_all_Payment')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
 
     let totalOrderCost = 0;
     for (let i = 0; i < orders.length; i++) {
-        const element = parseFloat(orders[i].totalAmount);
+        const element = parseFloat(orders[i].paid_amount);
         totalOrderCost = totalOrderCost + element;
     }
     console.log(totalOrderCost)
@@ -58,7 +58,9 @@ const MarchandiserDash = () => {
 
     return (
         <section className="fluid-container">
+             <div style={{ border: "3px solid #076270" }} className="text-center">
             <h1>Marchandiser Dashboard</h1>
+            </div>
             <div className="row mx-0">
                 <div className="col-md-2 p-0">
                     <MarchanSidebar></MarchanSidebar>
@@ -66,37 +68,37 @@ const MarchandiserDash = () => {
                 <div className="col-md-9 p-5 ">
                     <div className="row mx-0">
                         <div className="col-md-4">
-                        <div style={{ height: "200px", width: "300px", backgroundColor: "green", padding: "10px", margin: "10px", color: "white", textAlign: "center" }}>
+                        <div style={{ height: "200px", width: "300px", backgroundColor: "#076270", padding: "10px", margin: "10px", color: "white", textAlign: "center" }}>
                             <p>Total Buyer</p>
                             <p>{buyers.length}</p>
                         </div>
                         </div> 
                          <div className="col-md-4">
-                        <div style={{ height: "200px", width: "300px", backgroundColor: "red", padding: "10px", margin: "10px", color: "white", textAlign: "center" }}>
-                            <p>Total Supplier</p>
+                        <div style={{ height: "200px", width: "300px", backgroundColor: "#15aec5", padding: "10px", margin: "10px", color: "white", textAlign: "center" }}>
+                            <p>Total Number of Material Order</p>
                             <p>{suppliers.length}</p>
                         </div>
                         </div>
                         <div className="col-md-4">
-                        <div style={{ height: "200px", width: "300px", backgroundColor: "green", padding: "10px", margin: "10px", color: "white", textAlign: "center" }}>
+                        <div style={{ height: "200px", width: "300px", backgroundColor: "#076270", padding: "10px", margin: "10px", color: "white", textAlign: "center" }}>
                             <p>Total Order</p>
                             <p>{orders.length}</p>
                         </div>
                         </div>
                         <div className="col-md-4">
-                        <div style={{ height: "200px", width: "300px", backgroundColor: "red", padding: "10px", margin: "10px", color: "white", textAlign: "center" }}>
+                        <div style={{ height: "200px", width: "300px", backgroundColor: "#15aec5", padding: "10px", margin: "10px", color: "white", textAlign: "center" }}>
                             <p>Total Order Amount</p>
                             <p>{totalOrderCost}</p>
                         </div>
                         </div>
                         <div className="col-md-4">
-                        <div style={{ height: "200px", width: "300px", backgroundColor: "green", padding: "10px", margin: "10px", color: "white", textAlign: "center" }}>
+                        <div style={{ height: "200px", width: "300px", backgroundColor: "#076270", padding: "10px", margin: "10px", color: "white", textAlign: "center" }}>
                             <p>Material Cost</p>
                             <p>{totalSpendAmount}</p>
                         </div>
                         </div>
                         <div className="col-md-4">
-                        <div style={{ height: "200px", width: "300px", backgroundColor: "red", padding: "10px", margin: "10px", color: "white", textAlign: "center" }}>
+                        <div style={{ height: "200px", width: "300px", backgroundColor: "#15aec5", padding: "10px", margin: "10px", color: "white", textAlign: "center" }}>
                             <p>Remaining Amount</p>
                             <p>{remainingAmount}</p>
                         </div>

@@ -54,10 +54,29 @@ const OrderStatus = () => {
           console.log(e);
         }
       }
+      
+    const handlePaymentBtn = async(id) => {
+
+        const payment_status = 'Recieved'
+        const user = { id, payment_status };
+        try {
+            const res= await axios.put(`/updatePayment/${id}`,user)
+          console.log(res.data);
+          if (res.data) {
+            alert("Do you want to confirm?")
+            statusUpdated();
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      }
 
   
     return (
         <section className="fluid-container">
+           <div style={{ border: "3px solid #076270" }} className="text-center">
+            <h1>Marchandiser Dashboard</h1>
+            </div>
             <div className="row mx-0">
                 <div className='col-md-2 p-0'>
                     <MarchanSidebar></MarchanSidebar>
@@ -71,6 +90,7 @@ const OrderStatus = () => {
                                 <table class="table table-primary table-bordered">
                                     <thead>
                                         <tr>
+                                            <th className="" scope="col">Buyer Email</th>
                                             <th className="" scope="col">Product Name</th>
                                             <th className="" scope="col">Color</th>
                                             <th className="" scope="col">Measurement</th>
@@ -79,12 +99,14 @@ const OrderStatus = () => {
                                             <th className="" scope="col">Order Date</th>
                                             <th className="" scope="col">Delivery Date</th>
                                             <th className="" scope="col">Status</th>
+                                            <th className="" scope="col">Payment Status</th>
                                             <th className="" scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                         {/* onClick={onSelect} id={order.id} key={order.id} */}
+                                        <td className="">{order.email}</td>
                                             <td className="">{order.productName}</td>
                                             <td className="">{order.color}</td>
                                             <td className="">{order.measurement}</td>
@@ -93,9 +115,11 @@ const OrderStatus = () => {
                                             <td className="">{(new Date(order.orderDate).toDateString("dd/MM/yyyy"))}</td>
                                             <td className="">{(new Date(order.deliveryDate).toDateString("dd/MM/yyyy"))}</td>
                                             <td className="">{order.status}</td>
+                                            <td className="">{order.payment_status}</td>
                                             <td>
                                         <button onClick={() => handleRejectBtn(order.id)} className="btn btn-info m-2">Reject</button>
                                         <button onClick={() => handleConfirmBtn(order.id)} className="btn btn-success m-2">Confirm</button>
+                                        <button onClick={() => handlePaymentBtn(order.id)} className="btn btn-danger m-2">Recieve Payment</button>
                                     </td>
                                         </tr>
                                     </tbody>

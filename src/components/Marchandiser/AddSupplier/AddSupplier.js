@@ -13,7 +13,7 @@ const AddSupplier = () => {
     // order-------------------------
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/get_all_orders')
+        fetch('http://localhost:5000/order')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
@@ -30,7 +30,7 @@ const AddSupplier = () => {
     useEffect(() => {
         fetch('http://localhost:5000/supplier')
             .then(res => res.json())
-            .then(data => setSuppliers(data))
+            .then(data => setSupplier(data))
     }, [])
 
     let totalSpendAmount = 0;
@@ -105,8 +105,10 @@ const AddSupplier = () => {
 
     return (
         <section >
+             <div style={{ border: "3px solid #076270" }} className="text-center">
             <h1>Marchandiser Dashboard</h1>
-            <div className="container-fluid row ">
+            </div>
+            <div className="fluid-container row ">
                 <div className="col-md-2">
                     <MarchanSidebar></MarchanSidebar>
                 </div>

@@ -10,7 +10,8 @@ const SampleImg = () => {
     const [progress, setProgress] = useState(0);
     const [data, setData] = useState({
       measurement:"",
-      img_url: ""
+      img_url: "",
+      feedbackk:""
     })
   
     const onChangeData = (e) => {
@@ -61,8 +62,10 @@ const SampleImg = () => {
       }
     }
     return (
-        <section className="container-fluid  " >
-        <h1>Sample Dashboard</h1>
+        <section className="fluid-container  " >
+         <div style={{ border: "3px solid #076270" }} className="text-center">
+            <h1>Sample Dashboard</h1>
+            </div>
         <div className="row">
           <div className="col-md-2">
             <SampleSidebar></SampleSidebar>
