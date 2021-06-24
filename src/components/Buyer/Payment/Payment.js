@@ -19,6 +19,7 @@ const Payment = () => {
             const res = await axios.post(`/addPayment/${id}`, pay)
             console.log(res.data);
             if (res.data) {
+                e.target.reset();
                 alert("payment added successfully")
             }
         } catch (e) {

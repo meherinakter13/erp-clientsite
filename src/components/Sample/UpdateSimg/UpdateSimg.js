@@ -74,16 +74,16 @@ const UpdateSimg = () => {
              const res= await axios.put(`/updateFSampleImg/${id}`,updatedFeedback)
            console.log(res.data);
            if (res.data) {
-             alert("Do you want to confirm your feedback?")
+             alert("Updated Successfully")
              updateQnt();
            }
          } catch (e) {
            console.log(e);
          }
        }
-       const handleFeedbackSubmit = (e) => {
-         e.preventDefault();
-     } 
+    //    const handleFeedbackSubmit = (e) => {
+    //      e.preventDefault();
+    //  } 
     return (
         <section className="fluid-container  " >
         <div style={{ border: "3px solid #076270" }} className="text-center">
@@ -95,11 +95,11 @@ const UpdateSimg = () => {
          </div>
          <div className="col-md-10 p-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
            <h5 className="text-brand">Update Sample</h5>
-           <form onSubmit={handleFeedbackSubmit}>
+           <form onSubmit={handleQnty}>
              <progress value={progress} max="100" />
              <br />
              <br />
-             <input type="file" onChange={handleChange} required/>
+             <input type="file" onChange={handleChange}/>
              <button onClick={handleUpload}>Upload</button>
              <br />
              <br />
@@ -109,7 +109,7 @@ const UpdateSimg = () => {
              <label for="exampleInputName">Measurement</label>
            <input  onChange={(e) => setMeasurement(e.target.value)}defaultValue={measurement}  type="text" class="form-control" name="measurement" placeholder=" sample measurement" required/>
            <br />
-           <button onClick={handleQnty} class="btn btn-primary"  type="submit" value="Add Supplier">Update</button>
+           <input type="submit" class="btn btn-danger"value="Update"/> 
              </form>
          </div>
        </div>

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import MarchanSidebar from '../MarchanSidebar/MarchanSidebar';
+import { Link } from 'react-router-dom';
 
 const ManageBuyer = () => {
     const [buyers, setBuyers] = useState([])
@@ -60,7 +61,7 @@ const ManageBuyer = () => {
                                         <td className="">{buyer.department}</td>
                                         <td className="">{buyer.email}</td>
                                         <td className="">{buyer.password}</td>
-                                        <td className=""><button className="btn btn-danger mt-3 mr-2">Edit</button>
+                                        <td className=""> <button className="btn btn-danger mt-3 mr-2"><Link to ={`/editBuyer/${buyer.id}`}className="text-white">Edit</Link></button>
                                             <button className="btn btn-danger mt-3" onClick={() => handleDelete(buyer.id)}>Delete</button></td>
                                     </tr>
                                 </tbody>

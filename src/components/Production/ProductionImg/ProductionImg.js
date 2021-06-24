@@ -56,6 +56,7 @@ const ProductionImg = () => {
       const res = await axios.post(`/addFProImg/${id}`, data)
       console.log(res.data);
       if (res.data) {
+        e.target.reset();
         alert("Product info added successfully")
       }
     } catch (e) {

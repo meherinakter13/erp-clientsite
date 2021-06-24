@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import { UserContext } from '../../App';
@@ -69,31 +69,34 @@ const Login = () => {
             console.log(e);
         }
     }
-    // const storeAuthToken = () =>{
-    //     firebase.auth().currentUser.getIdToken( true)
-    //     .then(function(idToken) {
-    //         sessionStorage.setItem('token',idToken);
-    //       })
-    //       .catch(function(error) {
-    //       });
-    // }
+
     return (
         <div className="container text-center w-25 mt-5 pt-5 bg-info text-white " >
-            <form>
+            <form onSubmit={onSubmit}>
                     <div class="form-group">
                         <label for="exampleInputName">Department/Buyer</label>
-                        <input onChange={onChange} type="text" class="form-control" name="department" placeholder="Enter Depertment name or Buyer"/>
+                        {/* <input onChange={onChange} type="text" class="form-control" name="department" placeholder="Enter Depertment name or Buyer"/> */}
+                        <select onChange={onChange} name="department" id="browsers" class="form-control" required>
+                            <option value=""></option>
+                            <option >Marchandiser</option>
+                            <option >Buyer</option>
+                            <option >Sample</option>
+                            <option >Production</option>
+                            <option >IE</option>
+                            <option >CAD</option>
+                           
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputName">Email</label>
-                        <input onChange={onChange} type="email" class="form-control" name="email" placeholder="Enter your email"/>
+                        <input onChange={onChange} type="email" class="form-control" name="email" placeholder="Enter your email" required/>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputName">Password</label>
-                        <input onChange={onChange} type="password" class="form-control" name="password" placeholder="Enter your password"/>
+                        <input onChange={onChange} type="password" class="form-control" name="password" placeholder="Enter your password"required/>
                     </div>
                     <br />
-                    <button className="btn btn-danger mb-3"onClick={onSubmit}>Login</button>
+                    <input class="btn btn-danger" type="submit" value="Login"/>
                     </form>
        
     </div>

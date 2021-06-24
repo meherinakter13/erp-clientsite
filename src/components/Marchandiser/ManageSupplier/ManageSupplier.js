@@ -24,7 +24,7 @@ const ManageSupplier = () => {
             console.log(res.data);
 
             if (res.data) {
-                alert("Supplier deleted successfully")
+                alert("Material deleted successfully")
                 deleteSupplier();
             }
         } catch (e) {

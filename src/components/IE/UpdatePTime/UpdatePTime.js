@@ -49,9 +49,9 @@ const UpdatePTime = () => {
               console.log(e);
             }
           }
-          const handleFeedbackSubmit = (e) => {
-            e.preventDefault();
-        } 
+        //   const handleFeedbackSubmit = (e) => {
+        //     e.preventDefault();
+        // } 
     return (
         <section className="fluid-container row " >
             <div className="col-md-3">
@@ -63,7 +63,7 @@ const UpdatePTime = () => {
             <div className="col-md-9 mt-5 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
                 <h4>Update Quantity of fabric for Product</h4>
                 {/* <p>{JSON.stringify(samples)}</p> */}
-<form onSubmit={handleFeedbackSubmit}>
+<form onSubmit={handleQnty}>
 
                 {/* {samples && samples.map((item) => {
                     //item.image
@@ -84,9 +84,9 @@ const UpdatePTime = () => {
                 <input type="number"defaultValue={costing}  min ="1" onChange={(e) => setCost(e.target.value)}required/>
 
                 <br /><br />
-                <button onClick={handleQnty} class="btn btn-primary"  type="submit" value="Add Supplier">Update</button>
-{/* 
-                <input type="submit" class="btn btn-danger"value="Submit"/>  */}
+                {/* <button onClick={handleQnty} class="btn btn-primary"  type="submit" value="Add Supplier">Update</button> */}
+
+                <input type="submit" class="btn btn-danger"value="Update"/> 
                 </form>
             </div>
         </section>

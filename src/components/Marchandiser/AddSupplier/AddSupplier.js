@@ -93,6 +93,7 @@ const AddSupplier = () => {
         try {
             const res = await axios.post('/addSupplier', suppliers)
             console.log(res.data);
+            e.target.reset();
             if (res.data) {
                 alert("Supplier added successfully")
 
@@ -113,7 +114,7 @@ const AddSupplier = () => {
                     <MarchanSidebar></MarchanSidebar>
                 </div>
                 <div className="col-md-10 p-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
-                    <h5 className="text-brand">Add Supplier Info</h5>
+                    <h5 className="text-brand">Add Material Info</h5>
                     <form onSubmit={handleSubmit}>
                         <div class="form-group">
                             <label for="exampleInputName">Company Name</label>
@@ -200,7 +201,7 @@ const AddSupplier = () => {
                         <input onChange={onChange} type="text" class="form-control" name="deliveryDate" placeholder="Enter deliveryDate" />
                     </div> */}
                         <br />
-                        <input class="btn btn-primary" type="submit" value="Add Supplier" />
+                        <input class="btn btn-primary" type="submit" value="Add material" />
                     </form>
                 </div>
             </div>

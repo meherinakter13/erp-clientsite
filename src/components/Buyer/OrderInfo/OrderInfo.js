@@ -55,6 +55,7 @@ const OrderInfo = () => {
             const res = await axios.post('/addOrder', orders)
             console.log(res.data);
             if (res.data) {
+                e.target.reset();
                 alert("order added successfully")
             }
         } catch (e) {

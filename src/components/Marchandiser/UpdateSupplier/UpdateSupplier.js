@@ -27,7 +27,7 @@ const UpdateSupplier = () => {
         // order-------------------------
        
         useEffect(() => {
-            fetch('http://localhost:5000/get_all_orders')
+            fetch('http://localhost:5000/order')
                 .then(res => res.json())
                 .then(data => setOrders(data))
         }, [])
@@ -57,7 +57,7 @@ const UpdateSupplier = () => {
             fetch(`http://localhost:5000/supplier/${id}`)
                 .then(res => res.json())
                 .then(data => {
-                    data.map(data => setSupplier(data[0]))
+                    setSupplier(data[0])
                 })
         }
         let totalSpendAmount = 0;
@@ -140,8 +140,10 @@ const UpdateSupplier = () => {
         };
         // e.preventDefault()
         try {
+
             const res= await axios.put(`/updateSupplier/${id}`,updatedSupplier)
           console.log(res.data);
+          
           if (res.data) {
             alert("Your material Info has been updated")
             updateSupplier();
@@ -150,9 +152,9 @@ const UpdateSupplier = () => {
           console.log(e);
         }
       }
-      const handleSupplierSubmit = (e) => {
-        e.preventDefault();
-    } 
+    //   const handleSupplierSubmit = (e) => {
+    //     e.preventDefault();
+    // } 
 
 
     return (
@@ -166,7 +168,7 @@ const UpdateSupplier = () => {
             </div>
             <div className="col-md-10 p-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
                 <h5 className="text-brand">Add Supplier Info</h5>
-                <form onSubmit={handleSupplierSubmit}>
+                <form onSubmit={handleSupplier}>
                     <div class="form-group">
                         <label for="exampleInputName">Company Name</label>
                         <input onChange={onChangecompany} type="text" class="form-control" defaultValue={supplier.companyName} name="companyName" placeholder="Enter companyName" required />
@@ -196,8 +198,8 @@ const UpdateSupplier = () => {
                         <Grid container justify="space-around">
                         {/* 2014-02-09 */}
 
-                        <input type="date" name="orderDate" value={orderDate} minDate={today} onChange={handleOrderDate}  />
-                        <input type="date" name="deliveryDate" value={deliveryDate} minDate={today} onChange={handleDeliveryDate}  />
+                        <input type="date" name="orderDate" value={orderDate} min={today} onChange={handleOrderDate}  />
+                        <input type="date" name="deliveryDate" value={deliveryDate} min={today} onChange={handleDeliveryDate}  />
                             {/* <KeyboardDatePicker
 
                                 margin="normal"
@@ -248,7 +250,7 @@ const UpdateSupplier = () => {
                         </Grid>
                     </MuiPickersUtilsProvider>
                     <br />
-                    <button onClick={handleSupplier} class="btn btn-primary" type="submit" value="Add Supplier">Update</button>
+                    <input type="submit" class="btn btn-danger"value="Update"/> 
                 </form>
             </div>
         </div>

@@ -20,7 +20,8 @@ const ProductQntyFab = () => {
         setid(id)
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         const cad = {
             qnty_fabric: q,
             sample_id: -1,
@@ -30,6 +31,7 @@ const ProductQntyFab = () => {
         //console.log(q)
         const res = await axios.post('/addFProQnty', cad)
         if (res.data) {
+            e.target.reset();
             alert("added")
         }
         console.log(res.data)

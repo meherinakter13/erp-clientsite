@@ -16,6 +16,7 @@ const AddBuyer = () => {
             console.log(res.data);
 
             if (res.data) {
+                e.target.reset();
 
                 alert("Buyer added successfully")
 

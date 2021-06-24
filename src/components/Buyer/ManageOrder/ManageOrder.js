@@ -37,7 +37,7 @@ const ManageOrder = () => {
                 console.log(res.data);
 
                 if (res.data) {
-                    alert("order deleted successfully")
+                    alert("Order Canceled successfully")
                     deleteProduct();
                 }
             } catch (e) {
@@ -59,7 +59,7 @@ const ManageOrder = () => {
 
         // }
         else {
-            alert("pfbsdbsdk")
+            alert("You can not cancel this order")
         }
 
     }

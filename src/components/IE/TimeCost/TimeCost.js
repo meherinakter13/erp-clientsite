@@ -21,7 +21,8 @@ const TimeCost = () => {
         setid(id)
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         const IE = {
             timing: time,
             costing: cost,
@@ -32,6 +33,7 @@ const TimeCost = () => {
         //console.log(q)
         const res = await axios.post('/addFSampleTime', IE)
         if (res.data) {
+            e.target.reset();
             alert("added time and cost")
         }
         console.log(res.data)

@@ -55,6 +55,7 @@ const SampleImg = () => {
         const res = await axios.post(`/addFSampleImg/${id}`, data)
         console.log(res.data);
         if (res.data) {
+          e.target.reset();
           alert("Sample info added successfully")
         }
       } catch (e) {

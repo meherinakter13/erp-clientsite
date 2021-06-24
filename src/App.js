@@ -57,6 +57,7 @@ import UpdatePTime from './components/IE/UpdatePTime/UpdatePTime';
 import UpdateSimg from './components/Sample/UpdateSimg/UpdateSimg';
 import UpdatePimg from './components/Production/UpdatePimg/UpdatePimg';
 import FinalProductBuy from './components/Buyer/FinalProductBuy/FinalProductBuy';
+import UpdateBuyer from './components/Marchandiser/UpdateBuyer/UpdateBuyer';
 export const UserContext = createContext();
 
 axios.defaults.baseURL = 'http://localhost:5000'
@@ -158,6 +159,9 @@ function App() {
         </Route>
         <Route path ="/manageBuyer">
           <ManageBuyer></ManageBuyer>
+        </Route>
+        <Route path ="/editBuyer/:id">
+          <UpdateBuyer></UpdateBuyer>
         </Route>
         <Route path ="/report">
           <Report></Report>

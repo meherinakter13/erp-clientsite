@@ -37,7 +37,7 @@ const FeedBack = () => {
             const res= await axios.put(`/updatefeedback/${id}`,updatedFeedback)
           console.log(res.data);
           if (res.data) {
-            alert("Do you want to confirm your feedback?")
+            alert("Feedback added successfully.")
             updatefeedback();
           }
         } catch (e) {

@@ -21,7 +21,8 @@ const ProductTimeCost = () => {
         setid(id)
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         const IE = {
             timing: time,
             costing: cost,
@@ -31,6 +32,7 @@ const ProductTimeCost = () => {
 
         const res = await axios.post('/addFProTime', IE)
         if (res.data) {
+            e.target.reset();
             alert("added time and cost")
         }
         console.log(res.data)
