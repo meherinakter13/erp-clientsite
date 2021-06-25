@@ -89,7 +89,7 @@ const SampleInfo = () => {
             <br />
             <br />
             <label for="exampleInputName">Measurement</label>
-            <input onChange={onChangeData} type="text" class="form-control" name="measurement" placeholder=" sample measurement" required />
+            <input onChange={onChangeData} type="text" class="form-control" name="measurement" placeholder="Enter measurement" required />
             <label for="exampleInputEmail1">Fabric Type</label>
             <input onChange={onChangeData} type="text" class="form-control" name="fabric" placeholder="Enter fabric type" required />
             <br/>

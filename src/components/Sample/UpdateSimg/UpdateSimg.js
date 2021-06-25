@@ -100,7 +100,7 @@ const UpdateSimg = () => {
              <br />
              <br />
              <input type="file" onChange={handleChange}/>
-             <button onClick={handleUpload}>Upload</button>
+             <button className="btn btn-info"onClick={handleUpload}>Upload</button>
              <br />
              <br />
              <img style={{ height: "100px", width: "100px" }} src={url}  alt="firebase-image" />

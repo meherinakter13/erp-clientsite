@@ -58,13 +58,16 @@ const UpdateSTime = () => {
         //     e.preventDefault();
         // } 
     return (
-        <section className="fluid-container row " >
+        <section className="fluid-container  " >
+        <div style={{ border: "3px solid #076270" }} className="text-center">
+            <h1>IE Dashboard</h1>
+            </div>
+            <div className="row">
             <div className="col-md-3">
-                <h1>IE Dashboard</h1>
                 <IESidebar></IESidebar>
             </div>
-            <div className="col-md-9 mt-5 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
-                <h4>Update Time And Cost of fabric for Sample</h4>
+            <div className="col-md-9 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
+                <h4>Update Time And Cost for Final Sample</h4>
                 {/* <p>{JSON.stringify(samples)}</p> */}
 <form onSubmit={handleQnty}>
 
@@ -85,6 +88,7 @@ const UpdateSTime = () => {
 
                 <input type="submit" class="btn btn-danger"value="Update"/> 
                 </form>
+            </div>
             </div>
         </section>
     );

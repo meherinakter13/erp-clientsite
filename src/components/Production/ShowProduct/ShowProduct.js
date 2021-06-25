@@ -40,8 +40,8 @@ const ShowProduct = () => {
                                             <td className="">{order.productName}</td>
                                             <td className="">{order.color}</td>
                                             <td className="">{order.measurement}</td>
-                                            <td className="">{order.quantity}</td>
-                                            <td className="">{order.totalAmount}</td>
+                                            <td className="">{order.quantity} pieces</td>
+                                            <td className="">{order.totalAmount} Tk</td>
                                             <td className="">{(new Date(order.orderDate).toDateString("dd/MM/yyyy"))}</td>
                                             <td className="">{(new Date(order.deliveryDate).toDateString("dd/MM/yyyy"))}</td>
                                             <td><button className="  btn btn-danger"><Link to ={`/addFProImg/${order.id}`} className = "text-white">Add Image</Link> </button></td>

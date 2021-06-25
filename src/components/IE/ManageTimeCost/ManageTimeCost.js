@@ -46,8 +46,8 @@ const ManageTimeCost = () => {
          <thead>
              <tr>
              <th className="w-25" scope="col">Time</th>
-             <th className="w-50" scope="col">Cost</th>
-             <th className="w-25" scope="col">Action</th>
+             <th className="w-25" scope="col">Cost</th>
+             <th className="w-50" scope="col">Action</th>
              </tr>
          </thead>
      </table>
@@ -57,9 +57,9 @@ const ManageTimeCost = () => {
              <table class="table table-primary">
                  <tbody>
                      <tr>
-                     <td className="w-25">{sample.timing}</td>
-                     <td className="w-25">{sample.costing}</td>
-                     <td className="">
+                     <td className="w-25">{sample.timing} days</td>
+                     <td className="w-25">{sample.costing} Tk</td>
+                     <td className="w-50">
                      <button className="btn btn-danger mt-3 mr-2"><Link to ={`/editSaTime/${sample.id}`}className="text-white">Edit</Link></button>
                          <button className ="btn btn-danger mt-3" onClick = {()=>handleDelete(sample.id)}>Delete</button></td>
                      </tr>

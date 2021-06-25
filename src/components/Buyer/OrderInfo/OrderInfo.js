@@ -77,8 +77,8 @@ const OrderInfo = () => {
                 <h5 className="text-brand">Add Order Info</h5>
                 <form onSubmit= {handleSubmit}>
                     <div class="form-group">
-                        <label for="exampleInputName">ProductName</label>
-                        <input onChange={onChange} type="text" class="form-control" name="productName" placeholder=" ProductName name" required />
+                        <label for="exampleInputName">Product Name</label>
+                        <input onChange={onChange} type="text" class="form-control" name="productName" placeholder="Enter Product name" required />
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Color</label>
@@ -94,7 +94,7 @@ const OrderInfo = () => {
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Total Amount</label>
-                        <input onChange={onChange} type="number" min="1" class="form-control" name="totalAmount" placeholder="Enter totalAmount" required/>
+                        <input onChange={onChange} type="number" min="1" class="form-control" name="totalAmount" placeholder="Enter total amount" required/>
                     </div>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
 

@@ -118,19 +118,19 @@ const AddSupplier = () => {
                     <form onSubmit={handleSubmit}>
                         <div class="form-group">
                             <label for="exampleInputName">Company Name</label>
-                            <input onChange={onChange} type="text" class="form-control" name="companyName" placeholder="Enter companyName" required />
+                            <input onChange={onChange} type="text" class="form-control" name="companyName" placeholder="Enter company name" required />
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name</label>
-                            <input onChange={onChange} type="text" class="form-control" name="name" placeholder="Enter name" required/>
+                            <input onChange={onChange} type="text" class="form-control" name="name" placeholder="Enter supplier name" required/>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
-                            <input onChange={onChange} type="email" class="form-control" name="email" placeholder="Enter email" required/>
+                            <input onChange={onChange} type="email" class="form-control" name="email" placeholder="Enter supplier email" required/>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Material Name</label>
-                            <input onChange={onChange} type="text" class="form-control" name="materialName" placeholder="Enter materialName" required/>
+                            <input onChange={onChange} type="text" class="form-control" name="materialName" placeholder="Enter material name" required/>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Quantity</label>
@@ -138,7 +138,7 @@ const AddSupplier = () => {
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Total Amount</label>
-                            <input onChange={onChange} type="number" min="1" max={remainingAmount} class="form-control" name="totalAmount" placeholder="Enter totalAmount" required/>
+                            <input onChange={onChange} type="number" min="1" max={remainingAmount} class="form-control" name="totalAmount" placeholder="Enter total amount" required/>
                         </div>
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
 

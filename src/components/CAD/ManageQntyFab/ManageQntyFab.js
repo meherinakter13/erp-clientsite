@@ -54,8 +54,8 @@ const ManageQntyFab = () => {
                                 <table class="table table-primary">
                                     <tbody>
                                         <tr>
-                                            <td className="w-25">{sample.qnty_fabric} Kg</td>
-                                            <td className="">
+                                            <td className="w-55">{sample.qnty_fabric} meter</td>
+                                            <td className="w-50">
                                             <button className="btn btn-danger mt-3 mr-2"><Link to ={`/editSaQnty/${sample.id}`}className="text-white">Edit</Link></button>
                                                 <button className="btn btn-danger mt-3" onClick={() => handleDelete(sample.id)}>Delete</button></td>
                                         </tr>

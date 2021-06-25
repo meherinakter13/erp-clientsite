@@ -219,7 +219,7 @@ const Report = () => {
                                                 <th scope="row">{WS.name}</th>
                                                 <th scope="row">{WS.email}</th>
                                                 <th scope="row">{WS.materialName}</th>
-                                                <th scope="row">{WS.quantity}</th>
+                                                <th scope="row">{WS.quantity} Kg</th>
                                                 <th scope="row">{(new Date(WS.orderDate).toDateString("dd/MM/yyyy"))}</th>                                                
                                                 <th scope="row">{(new Date(WS.deliveryDate).toDateString("dd/MM/yyyy"))}</th>
                                                 <th scope="row">{WS.totalAmount} Tk</th>

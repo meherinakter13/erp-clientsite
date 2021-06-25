@@ -58,8 +58,8 @@ const ManagePTime = () => {
              <table class="table table-primary">
                  <tbody>
                      <tr>
-                     <td className="w-25">{sample.timing}</td>
-                     <td className="w-25">{sample.costing}</td>
+                     <td className="w-25">{sample.timing} days</td>
+                     <td className="w-25">{sample.costing} Tk</td>
                      <td className="w-50">
                      <button className="btn btn-danger mt-3 mr-2"><Link to ={`/editPTime/${sample.id}`}className="text-white">Edit</Link></button>
                          <button className ="btn btn-danger mt-3" onClick = {()=>handleDelete(sample.id)}>Delete</button></td>

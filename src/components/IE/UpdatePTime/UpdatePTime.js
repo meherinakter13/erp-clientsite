@@ -53,17 +53,18 @@ const UpdatePTime = () => {
         //     e.preventDefault();
         // } 
     return (
-        <section className="fluid-container row " >
-            <div className="col-md-3">
-                 <div style={{ border: "3px solid #076270" }} className="text-center">
+        <section className="fluid-container  " >
+        <div style={{ border: "3px solid #076270" }} className="text-center">
             <h1>IE Dashboard</h1>
             </div>
+            <div className="row">
+            <div className="col-md-3">
                 <IESidebar></IESidebar>
             </div>
-            <div className="col-md-9 mt-5 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
-                <h4>Update Quantity of fabric for Product</h4>
+            <div className="col-md-9 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
+                <h4>Update Time And Cost for Final Product</h4>
                 {/* <p>{JSON.stringify(samples)}</p> */}
-<form onSubmit={handleQnty}>
+              <form onSubmit={handleQnty}>
 
                 {/* {samples && samples.map((item) => {
                     //item.image
@@ -72,14 +73,14 @@ const UpdatePTime = () => {
                 })} */}
 
                 <br /><br />
-                <label htmlFor="">Quantity of fabric</label>
+                <label htmlFor="">Time</label>
                 <br />
                 <input type="number"defaultValue={timing}  min ="1" onChange={(e) => setTime(e.target.value)}required/>
 
                 <br /><br />
                 
                 <br /><br />
-                <label htmlFor="">Quantity of fabric</label>
+                <label htmlFor="">Cost</label>
                 <br />
                 <input type="number"defaultValue={costing}  min ="1" onChange={(e) => setCost(e.target.value)}required/>
 
@@ -88,6 +89,7 @@ const UpdatePTime = () => {
 
                 <input type="submit" class="btn btn-danger"value="Update"/> 
                 </form>
+                </div>
             </div>
         </section>
     );

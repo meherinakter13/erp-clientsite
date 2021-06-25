@@ -15,7 +15,7 @@ const ViewFinalProduct = () => {
             {/* <div className='col-md-2 p-0'>
               
             </div> */}
-            <h1>Final Product</h1>
+            <h1 className="m-auto text-info">Final Product</h1>
             <div className="col-md-10 p-4 mx-auto">
                 <div className="row">
                     {
@@ -40,7 +40,7 @@ const ViewFinalProduct = () => {
                                         <td className="">{product.measurement}</td>
                                         <td className="">{product.color}</td>
                                         <td className="">{product.quantity} pieces</td>
-                                        <td className="">{product.qnty_fabric} inch</td>
+                                        <td className="">{product.qnty_fabric} Kg</td>
                                         <td className="">{product.timing} days</td>
                                         <td className="">{product.costing} TK</td>
                                     </tr>

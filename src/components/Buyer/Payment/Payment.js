@@ -20,7 +20,7 @@ const Payment = () => {
             console.log(res.data);
             if (res.data) {
                 e.target.reset();
-                alert("payment added successfully")
+                alert("Payment added successfully")
             }
         } catch (e) {
             console.log(e);
@@ -52,8 +52,8 @@ const[amount,setAmount]= useState({})
             <h5 className="text-brand">Add Payment Info</h5>
             <form onSubmit= {handleSubmit}>
                 <div class="form-group">
-                    <label for="exampleInputName">Account NUmber</label>
-                    <input onChange={onChange} type="number" class="form-control" min="999999999" max ="9999999999"name="account_num" placeholder=" Account Number" required />
+                    <label for="exampleInputName">Account Number</label>
+                    <input onChange={onChange} type="number" class="form-control" min="999999999" max ="9999999999"name="account_num" placeholder="Enter Account Number" required />
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Amount</label>

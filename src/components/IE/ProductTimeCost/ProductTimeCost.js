@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import IESidebar from '../IESidebar/IESidebar';
+import { useParams } from 'react-router-dom';
 
 const ProductTimeCost = () => {
     const [products, setSProducts] = useState()
     const [time, setTime] = useState(0)
     const [cost, setCost] = useState(0)
     const [p_id, setid] = useState(-1)
-
+    let { id } = useParams();
     useEffect(() => {
         const load = async () => {
             const res = await axios.get('/fProduct')
@@ -16,10 +17,20 @@ const ProductTimeCost = () => {
         load()
     }, [])
 
-    const onSelect = (e) => {
+    const onSelect =async (e) => {
+        //ck already added or not
+        ///check-img/ie/29
+
         const id = e.target.id
-        setid(id)
-    }
+        
+        const res = await axios.get('/check-img/ie/'+id)
+        console.log("click=",res.data)
+        if(!res.data.added){
+            setid(id)
+        }else{
+            alert("already added.")
+        }
+}
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -38,14 +49,15 @@ const ProductTimeCost = () => {
         console.log(res.data)
     }
     return (
-        <section className="fluid-container row " >
-            <div className="col-md-3">
-                 <div style={{ border: "3px solid #076270" }} className="text-center">
+        <section className="fluid-container  " >
+        <div style={{ border: "3px solid #076270" }} className="text-center">
             <h1>IE Dashboard</h1>
             </div>
+            <div className="row">
+            <div className="col-md-3">
                 <IESidebar></IESidebar>
             </div>
-            <div className="col-md-9 mt-5 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
+            <div className="col-md-9 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
                 <h4>Add product Time and Cost</h4>
                 {/* <p>{JSON.stringify(samples)}</p> */}
                 <form onSubmit={handleSubmit}>
@@ -66,6 +78,7 @@ const ProductTimeCost = () => {
                     <br /><br />
                     <input type="submit" class="btn btn-danger" value="Submit" />
                 </form>
+            </div>
             </div>
         </section>
     );

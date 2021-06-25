@@ -14,11 +14,20 @@ const ProductQntyFab = () => {
         }
         load()
     }, [])
+    const onSelect =async (e) => {
+        //ck already added or not
+        ///check-img/cad/29
 
-    const onSelect = (e) => {
         const id = e.target.id
-        setid(id)
-    }
+        
+        const res = await axios.get('/check-img/cad/'+id)
+        console.log("click=",res.data)
+        if(!res.data.added){
+            setid(id)
+        }else{
+            alert("already added.")
+        }
+}
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -37,14 +46,15 @@ const ProductQntyFab = () => {
         console.log(res.data)
     }
     return (
-        <section className="fluid-container row " >
-            <div className="col-md-3">
-                 <div style={{ border: "3px solid #076270" }} className="text-center">
+        <section className="fluid-container  " >
+        <div style={{ border: "3px solid #076270" }} className="text-center">
             <h1>CAD Dashboard</h1>
             </div>
+            <div className="row">
+            <div className="col-md-3">
                 <CADSidebar></CADSidebar>
             </div>
-            <div className="col-md-9 mt-5 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
+            <div className="col-md-9 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
                 <h4>Add Quantity of fabric for Products</h4>
                 {/* <p>{JSON.stringify(samples)}</p> */}
             <form onSubmit={handleSubmit}>
@@ -61,6 +71,7 @@ const ProductQntyFab = () => {
                 <br /><br />
                 <input type="submit" className="btn btn-danger" value="Submit"/>
                 </form>
+            </div>
             </div>
         </section>
     );

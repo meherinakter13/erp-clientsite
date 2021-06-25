@@ -25,18 +25,18 @@ const ShowSample = () => {
                             <table class="table table-primary table-bordered">
                                 <thead>
                                     <tr>
+                                    <th className="w-25" scope="col">Image</th>
                                         <th className="w-25" scope="col">Measurement</th>
                                         <th className="w-25" scope="col">Fabric</th>
-                                        <th className="w-25" scope="col">Image</th>
                                         <th className="w-25" scope="col">Feedback</th>
                                         <th className="w-25" scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
+                                    <td className=""><img style={{width:"150px",height:"150px"}} src={sample.image} alt=""/></td>
                                         <td className="">{sample.measurement}</td>
                                         <td className="">{sample.fabric}</td>
-                                        <td className=""><img style={{width:"150px",height:"150px"}} src={sample.image} alt=""/></td>
                                         <td className="">{sample.feedback}</td>
                                         <td><button className="m-5  btn btn-danger"><Link to ={`/addFSampleImg/${sample.id}`} className = "text-white">Add Image</Link> </button></td>
                                     </tr>

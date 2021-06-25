@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import CADSidebar from '../CADSidebar/CADSidebar';
-
+import { useParams } from 'react-router-dom';
 const QntyFabric = () => {
     //insert into CAD
     //step 1: get all the sample
@@ -11,7 +11,7 @@ const QntyFabric = () => {
     const [samples, setSamples] = useState()
     const [q, setQ] = useState(0)
     const [s_id, setid] = useState(-1)
-   
+    let { id } = useParams();
 
     useEffect(() => {
         const load = async () => {
@@ -21,10 +21,20 @@ const QntyFabric = () => {
         load()
     }, [])
 
-    const onSelect = (e) => {
+    const onSelect =async (e) => {
+        //ck already added or not
+        ///check-img/cad/29
+
         const id = e.target.id
-        setid(id)
-    }
+        
+        const res = await axios.get('/check-imgcad/'+id)
+        console.log("click=",res.data)
+        if(!res.data.added){
+            setid(id)
+        }else{
+            alert("already added.")
+        }
+}
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -38,20 +48,21 @@ const QntyFabric = () => {
         const res = await axios.post('/addFSampleqnty', cad)
         if (res.data) {
             e.target.reset();
-            alert("added")
+            alert("added quantity of fabric")
         }
         console.log(res.data)
     }
 
     return (
-        <section className="fluid-container row " >
-            <div className="col-md-3">
-                 <div style={{ border: "3px solid #076270" }} className="text-center">
+        <section className="fluid-container  " >
+        <div style={{ border: "3px solid #076270" }} className="text-center">
             <h1>CAD Dashboard</h1>
             </div>
+            <div className="row">
+            <div className="col-md-3">
                 <CADSidebar></CADSidebar>
             </div>
-            <div className="col-md-9 mt-5 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
+            <div className="col-md-9 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
                 <h4>Add Quantity of fabric for Sample</h4>
                 {/* <p>{JSON.stringify(samples)}</p> */}
 <form onSubmit={handleSubmit}>
@@ -71,6 +82,7 @@ const QntyFabric = () => {
 
                 <input type="submit" class="btn btn-danger"value="Submit"/> 
                 </form>
+            </div>
             </div>
         </section>
     );

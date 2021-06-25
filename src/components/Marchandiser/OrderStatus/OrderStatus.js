@@ -110,14 +110,17 @@ const OrderStatus = () => {
                                             <td className="">{order.productName}</td>
                                             <td className="">{order.color}</td>
                                             <td className="">{order.measurement}</td>
-                                            <td className="">{order.quantity}</td>
-                                            <td className="">{order.totalAmount}</td>
+                                            <td className="">{order.quantity} pieces</td>
+                                            <td className="">{order.totalAmount} Tk</td>
                                             <td className="">{(new Date(order.orderDate).toDateString("dd/MM/yyyy"))}</td>
                                             <td className="">{(new Date(order.deliveryDate).toDateString("dd/MM/yyyy"))}</td>
                                             <td className="">{order.status}</td>
                                             <td className="">{order.payment_status}</td>
                                             <td>
-                                        <button onClick={() => handleRejectBtn(order.id)} className="btn btn-info m-2">Reject</button>
+                                              {
+                                               order.status==="Confirmed"?<></>: <button onClick={() => handleRejectBtn(order.id)} className="btn btn-info m-2">Reject</button>
+                                              }
+                                        
                                         <button onClick={() => handleConfirmBtn(order.id)} className="btn btn-success m-2">Confirm</button>
                                         <button onClick={() => handlePaymentBtn(order.id)} className="btn btn-danger m-2">Recieve Payment</button>
                                     </td>

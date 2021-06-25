@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { storage } from "../../firebase";
 import SampleSidebar from '../SampleSidebar/SampleSidebar';
+import { useHistory } from 'react-router';
 
 const SampleImg = () => {
   let { id } = useParams();
@@ -13,6 +14,25 @@ const SampleImg = () => {
       img_url: "",
       feedbackk:""
     })
+
+    const history = useHistory();
+    const [samples ,setSamples] = useState([])
+    useEffect(()=>{
+        fetch('http://localhost:5000/get_all_smaple_img')
+        .then(res =>res.json())
+        .then(data => {
+
+          setSamples(data)
+          
+          if(data.filter(item=>item.s_id==id).length>0){
+            alert("You have already added the final sample.")
+            history.push('/showSample')
+            //you have already added the sample
+          }
+          console.log(id)
+          console.log(data)
+        })
+    },[])
   
     const onChangeData = (e) => {
       console.log(e.target.name, "----", e.target.value)
@@ -52,11 +72,18 @@ const SampleImg = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        const res = await axios.post(`/addFSampleImg/${id}`, data)
+        //console.log("here")
+        //console.log(samples.filter(item=>item.s_id==id).length)
+        if(samples.filter(item=>item.s_id==id).length>0){
+          //alert("fgvjhv")
+          //you have already added the sample
+        }else{
+      const res = await axios.post(`/addFSampleImg/${id}`, data)
         console.log(res.data);
         if (res.data) {
           e.target.reset();
           alert("Sample info added successfully")
+        }
         }
       } catch (e) {
         console.log(e);
@@ -78,7 +105,7 @@ const SampleImg = () => {
               <br />
               <br />
               <input type="file" onChange={handleChange} required/>
-              <button onClick={handleUpload}>Upload</button>
+              <button className="btn btn-info"onClick={handleUpload}>Upload</button>
               <br />
               <br />
               <img style={{ height: "100px", width: "100px" }} src={data.img_url || "http://via.placeholder.com/300"} alt="firebase-image" />

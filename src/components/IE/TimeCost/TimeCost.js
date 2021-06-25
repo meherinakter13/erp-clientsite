@@ -1,12 +1,33 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import IESidebar from '../IESidebar/IESidebar';
+import { useHistory } from 'react-router';
+import { useParams } from 'react-router-dom';
 
 const TimeCost = () => {
     const [samples, setSamples] = useState()
     const [time, setTime] = useState(0)
     const [cost, setCost] = useState(0)
     const [s_id, setid] = useState(-1)
+
+    let { id } = useParams();
+    // const history = useHistory();
+    // const [sampleImg ,setSampleImg] = useState([])
+    // useEffect(()=>{
+    //     fetch('http://localhost:5000/fSample')
+    //     .then(res =>res.json())
+    //     .then(data => {
+    //         setSampleImg(data)
+    //         if(data.filter(item=>item.id==id).length>0){
+    //             alert("You have already added the final sample.")
+    //             history.push('/showSample')
+    //             //you have already added the sample
+    //           }
+    //         //   console.log(id)
+    //           console.log(data)
+    //         console.log("==",data)
+    //     })
+    // },[])
 
     useEffect(() => {
         const load = async () => {
@@ -16,9 +37,19 @@ const TimeCost = () => {
         load()
     }, [])
 
-    const onSelect = (e) => {
-        const id = e.target.id
-        setid(id)
+    const onSelect =async (e) => {
+            //ck already added or not
+            ///check-img/ie/29
+
+            const id = e.target.id
+            
+            const res = await axios.get('/check-imgie/'+id)
+            console.log("click=",res.data)
+            if(!res.data.added){
+                setid(id)
+            }else{
+                alert("already added.")
+            }
     }
 
     const handleSubmit = async (e) => {
@@ -40,14 +71,15 @@ const TimeCost = () => {
     }
 
     return (
-        <section className="fluid-container row " >
-            <div className="col-md-3">
-                 <div style={{ border: "3px solid #076270" }} className="text-center">
+        <section className="fluid-container  " >
+        <div style={{ border: "3px solid #076270" }} className="text-center">
             <h1>IE Dashboard</h1>
             </div>
+            <div className="row">
+            <div className="col-md-3">
                 <IESidebar></IESidebar>
             </div>
-            <div className="col-md-9 mt-5 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
+            <div className="col-md-9 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
                 <h4>Add Sample Time and Cost</h4>
                 {/* <p>{JSON.stringify(samples)}</p> */}
 
@@ -72,6 +104,7 @@ const TimeCost = () => {
                 <br />
                 <input type="submit" className="btn btn-danger"value="submit"/>
                 </form>
+            </div>
             </div>
         </section>
     );

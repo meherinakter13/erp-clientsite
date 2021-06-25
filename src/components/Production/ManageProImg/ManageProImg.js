@@ -47,8 +47,7 @@ const ManageProImg = () => {
              <th className="w-25" scope="col">Image</th>
              <th className="w-25" scope="col">Measurement</th>
              <th className="w-25" scope="col">Color</th>
-             <th className="w-25" scope="col">Quantity</th>
-             <th className="w-50" scope="col">Action</th>
+             <th className="w-25" scope="col">Action</th>
              </tr>
          </thead>
      </table>
@@ -62,7 +61,6 @@ const ManageProImg = () => {
                      <td className="w-25"><img style={{width:"150px",height:"150px"}} src={product.image} alt=""/></td>
                      <td className="w-25">{product.measurement}</td>
                      <td className="w-25">{product.color}</td>
-                     <td className="w-25">{product.quantity}</td>
                      <td className="w-25">
                      <button className="btn btn-danger mt-3 mr-2"><Link to ={`/editPimg/${product.id}`}className="text-white">Edit</Link></button>
                          <button className ="btn btn-danger mt-3" onClick = {()=>handleDelete(product.id)}>Delete</button></td>

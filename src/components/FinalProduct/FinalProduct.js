@@ -10,7 +10,7 @@ const FinalProduct = () => {
     }, [])
     return (
         <section className="container">
-        <h1>All Order List</h1>
+        <h1 className="text-center text-info">All Order List</h1>
         <div className="row mx-0">
             <div className=''>
                 {/* <BuyerSidebar></BuyerSidebar> */}
@@ -37,8 +37,8 @@ const FinalProduct = () => {
                                         <td className="">{order.productName}</td>
                                         <td className="">{order.color}</td>
                                         <td className="">{order.measurement}</td>
-                                        <td className="">{order.quantity}</td>
-                                        <td className="">{order.totalAmount}</td>
+                                        <td className="">{order.quantity} pieces</td>
+                                        <td className="">{order.totalAmount} Tk</td>
                                         <td className="">{(new Date(order.orderDate).toDateString("dd/MM/yyyy"))}</td>
                                         <td className="">{(new Date(order.deliveryDate).toDateString("dd/MM/yyyy"))}</td>
                                         <td className=""><button className ="btn btn-danger mt-3"><Link to ={`/viewFiProduct/${order.id}`}className="text-white">view Final Order</Link></button></td>

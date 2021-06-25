@@ -63,9 +63,9 @@ const ManageSupplier = () => {
                                         <td className="">{supplier.companyName}</td>
                                         <td className="">{supplier.name}</td>
                                         <td className="">{supplier.email}</td>
-                                        <td className="">{supplier.quantity}</td>
                                         <td className="">{supplier.materialName}</td>
-                                        <td className="">{supplier.totalAmount}</td>
+                                        <td className="">{supplier.quantity} Kg</td>
+                                        <td className="">{supplier.totalAmount} Tk</td>
                                         <td className="">{(new Date(supplier.orderDate).toDateString("dd/MM/yyyy"))}</td>
                                         <td className="">{(new Date(supplier.deliveryDate).toDateString("dd/MM/yyyy"))}</td>
                                         <td className=""><button className="btn btn-danger mt-3 mr-2"><Link to ={`/editSupplier/${supplier.id}`}className="text-white">Edit</Link></button>

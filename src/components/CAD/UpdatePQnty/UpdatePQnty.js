@@ -50,14 +50,15 @@ const UpdatePQnty = () => {
         //     e.preventDefault();
         // } 
     return (
-        <section className="fluid-container row " >
-            <div className="col-md-3">
-                 <div style={{ border: "3px solid #076270" }} className="text-center">
+        <section className="fluid-container  " >
+        <div style={{ border: "3px solid #076270" }} className="text-center">
             <h1>CAD Dashboard</h1>
             </div>
+            <div className="row">
+            <div className="col-md-3">
                 <CADSidebar></CADSidebar>
             </div>
-            <div className="col-md-9 mt-5 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
+            <div className="col-md-9 pt-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
                 <h4>Update Quantity of fabric for Product</h4>
                 {/* <p>{JSON.stringify(samples)}</p> */}
 <form onSubmit={handleQnty}>
@@ -78,6 +79,7 @@ const UpdatePQnty = () => {
 
                 <input type="submit" class="btn btn-danger"value="Update"/> 
                 </form>
+            </div>
             </div>
         </section>
     );

@@ -44,9 +44,9 @@ const FeedBack = () => {
           console.log(e);
         }
       }
-      const handleFeedbackSubmit = (e) => {
-        e.preventDefault();
-    } 
+    //   const handleFeedbackSubmit = (e) => {
+    //     e.preventDefault();
+    // } 
     return (
         <section>
              <div style={{ border: "3px solid #076270" }} className="text-center">
@@ -58,13 +58,13 @@ const FeedBack = () => {
             </div>
             <div className="col-md-10 p-5 pr-5" style={{ backgroundColor: "#F4FDFB" }}>
                 <h5 className="text-brand">Add Feedback</h5>
-                <form onSubmit={handleFeedbackSubmit} >
+                <form onSubmit={handleFeedback} >
                     <div class="form-group">
                         <label for="exampleInputName">FeedBack</label>
-                        <textarea onChange={onChangeValue} defaultValue={samples.feedback} rows="5" type="text" class="form-control" name="feedback" placeholder=" Give your feedback" />
+                        <textarea onChange={onChangeValue} defaultValue={samples.feedback} rows="5" type="text" class="form-control" name="feedback" placeholder=" Enter your feedback" />
                     </div>
                     <br />
-                    <button onClick={handleFeedback} class="btn btn-primary" type="submit" value="Add feedback">add</button>
+                    <input class="btn btn-primary" type="submit" value="Add feedback"/>
                 </form>
             </div>
             </div>

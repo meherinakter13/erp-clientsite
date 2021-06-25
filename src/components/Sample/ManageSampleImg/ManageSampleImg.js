@@ -41,7 +41,7 @@ const ManageSampleImg = () => {
               <SampleSidebar></SampleSidebar>
             </div>
             <div className="col-md-10 p-4 mx-auto">
-           <table class="table table-primary col-md-12 col-sm-12">
+           <table class="table table-primary text-center col-md-12 col-sm-12">
             <thead>
                 <tr>
                 <th className="w-25" scope="col">Image</th>

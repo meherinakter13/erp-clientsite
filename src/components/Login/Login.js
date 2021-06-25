@@ -14,56 +14,64 @@ const Login = () => {
     const { from } = location.state || { from: { pathname: "/" } };
 
     const [user, setUser] = useState({})
+    const [errorMsg, setErrorMsg] = useState({})
 
     const onChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value })
-        
+
     }
     const onSubmit = async (e) => {
         e.preventDefault()
         try {
             const res = await axios.post('/login', user)
-            const {name, email} = user;
+            const { name, email } = user;
             const signedInUser = {
                 name: name,
                 email: email
             }
-            setLoggedInUser(signedInUser) ;
+            setLoggedInUser(signedInUser);
             // storeAuthToken();
             history.replace(from);
             console.log(res.data);
 
+            // setErrorMsg(res.data.msg);
             if (!res.data.error) {
-                if (Define.D_Buyer == res.data.data.department) {
+                if (Define.D_Buyer === res.data.data.department) {
                     localStorage.setItem(Define.C_USER, JSON.stringify(res.data.data))
                     history.push('/buyer-dashboard')
-                
-                } 
-               else if (Define.D_IE == res.data.data.department) {
+
+                }
+                else if (Define.D_IE === res.data.data.department) {
                     localStorage.setItem(Define.C_USER, JSON.stringify(res.data.data))
                     history.push('/IE-dashboard')
                 }
-                else if (Define.D_CAD == res.data.data.department) {
+                else if (Define.D_CAD === res.data.data.department) {
                     localStorage.setItem(Define.C_USER, JSON.stringify(res.data.data))
                     history.push('/CAD-dashboard')
                 }
-                else if (Define.D_Marchandiser == res.data.data.department) {
+                else if (Define.D_Marchandiser === res.data.data.department) {
                     localStorage.setItem(Define.C_USER, JSON.stringify(res.data.data))
                     history.push('/marchandiser-dashboard')
                 }
-                else if (Define.D_Production == res.data.data.department) {
+                else if (Define.D_Production === res.data.data.department) {
                     localStorage.setItem(Define.C_USER, JSON.stringify(res.data.data))
                     history.push('/production-dashboard')
                 }
-                else if (Define.D_Sample == res.data.data.department) {
+                else if (Define.D_Sample === res.data.data.department) {
                     localStorage.setItem(Define.C_USER, JSON.stringify(res.data.data))
                     history.push('/sample-dashboard')
                 }
                 else {
                     ////
+                    
                 }
             } else {
+                // setErrorMsg(res.data.msg);
                 console.log('login failed', res.data.msg);
+                history.push('/login')
+                alert("Login failed, Please enter your email and password again.");
+                
+          
             }
         } catch (e) {
             console.log(e);
@@ -71,11 +79,12 @@ const Login = () => {
     }
 
     return (
-        <div className="container text-center w-25 mt-5 pt-5 bg-info text-white " >
-            <form onSubmit={onSubmit}>
+        <section>
+            <div className="container text-center w-25 mt-5 pt-5 bg-info text-white " >
+                <form onSubmit={onSubmit}>
                     <div class="form-group">
                         <label for="exampleInputName">Department/Buyer</label>
-                        {/* <input onChange={onChange} type="text" class="form-control" name="department" placeholder="Enter Depertment name or Buyer"/> */}
+                        {/* <input onChange={onChange} type="text" class="form-control" name="department" placeholder="Enter Department name or Buyer"/> */}
                         <select onChange={onChange} name="department" id="browsers" class="form-control" required>
                             <option value=""></option>
                             <option >Marchandiser</option>
@@ -84,22 +93,25 @@ const Login = () => {
                             <option >Production</option>
                             <option >IE</option>
                             <option >CAD</option>
-                           
+
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputName">Email</label>
-                        <input onChange={onChange} type="email" class="form-control" name="email" placeholder="Enter your email" required/>
+                        <input onChange={onChange} type="email" class="form-control" name="email" placeholder="Enter your email" required />
                     </div>
                     <div class="form-group">
                         <label for="exampleInputName">Password</label>
-                        <input onChange={onChange} type="password" class="form-control" name="password" placeholder="Enter your password"required/>
+                        <input onChange={onChange} type="password" class="form-control" name="password" placeholder="Enter your password" required />
                     </div>
-                    <br />
-                    <input class="btn btn-danger" type="submit" value="Login"/>
-                    </form>
-       
-    </div>
+                    <input class="btn btn-danger mb-5" type="submit" value="Login" />
+                </form>
+
+            
+
+            </div>
+           {/* <p className="text-danger">{errorMsg}</p> */}
+        </section>
     );
 };
 
